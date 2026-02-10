@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modern portfolio showcasing my skills, projects, and professional journey">
+    <meta name="author" content="CHANDRU M">
+    <title>Portfolio | CHANDRU M</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">CHANDRU M</div>
+            <ul class="nav-links">
+                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="#stats">Stats</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="section-label">HOME</div>
+        <div class="hero-background">
+            <img src="hero-bg.png" alt="Abstract gradient background">
+        </div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Hi, I'm <span style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">CHANDRU M</span></h1>
+            <p class="hero-subtitle">DATA ANALYST</p>
+            <p class="hero-description">Building beautiful, functional, and user-centric digital experiences with modern technologies and innovative design.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="cta-button">View My Work</a>
+                <a href="#" class="resume-button" download>
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats">
+        <div class="container">
+            <h2 class="section-title">Achievements</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-code"></i></div>
+                    <div class="stat-number" data-target="50000">0</div>
+                    <div class="stat-label">Lines of Code</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="stat-number" data-target="8">0</div>
+                    <div class="stat-label">Certifications</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                    <div class="stat-number" data-target="5000">0</div>
+                    <div class="stat-label">Hours of Learning</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>Passionate Developer with a Vision</h3>
+                    <p style="margin-bottom: 1rem;">I'm a dedicated developer who loves creating elegant solutions to complex problems. With a strong foundation in both frontend and backend technologies, I bring ideas to life through clean, efficient code and stunning user interfaces.</p>
+                    <p style="margin-bottom: 1rem;">My journey in tech has been driven by curiosity and a constant desire to learn. I believe in writing code that not only works but is maintainable, scalable, and makes a real impact.</p>
+                    <p>When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item fade-in">
+                        <h3>DATA ANALYST</h3>
+                        <p class="year">AFTER-GRADUATION</p>
+                        <p>Leading development teams and architecting scalable solutions for enterprise clients.</p>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <h3>DATA SCIENTIST</h3>
+                        <p class="year">AFTER-GRADUATION</p>
+                        <p>Built responsive web applications using modern frameworks and cloud technologies.</p>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <h3>DATA ENGINEER</h3>
+                        <p class="year">AFTER-GRADUATION</p>
+                        <p>Started my professional journey, learning best practices and contributing to various projects.</p>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <h3>ARTIFICIAL INTELLIGENCE AND DATA SCIENCE </h3>
+                        <p class="year">2023 - 2027</p>
+                        <p>pursuing, specializing in software engineering and data structures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-label">MY SKILLS</div>
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">POWER BI</span>
+                        <span class="skill-percentage">95%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--skill-width: 95%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">PYTHON</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--skill-width: 90%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">SQL</span>
+                        <span class="skill-percentage">88%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--skill-width: 88%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">EXCEL</span>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--skill-width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">JAVASCRIPT</span>
+                        <span class="skill-percentage">80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--skill-width: 80%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">JAVA</span>
+                        <span class="skill-percentage">40%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--skill-width: 40%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">React</span>
+                        <span class="skill-percentage">40%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--skill-width: 40%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">UI/UX Design</span>
+                        <span class="skill-percentage">80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--skill-width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-label">MY PROJECTS</div>
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="C:/Users/ASUS/.gemini/antigravity/brain/fd592fdb-0b97-4fa8-acaa-91482688edb3/project_ecommerce_1764515634488.png" alt="E-Commerce Platform">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">Live Demo</a>
+                                <a href="#" class="project-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <p class="project-description">A full-featured e-commerce solution with product management, shopping cart, payment integration, and admin dashboard.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">Stripe</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="C:/Users/ASUS/.gemini/antigravity/brain/fd592fdb-0b97-4fa8-acaa-91482688edb3/project_taskmanager_1764515652595.png" alt="Task Management App">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">Live Demo</a>
+                                <a href="#" class="project-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Task Manager Pro</h3>
+                        <p class="project-description">Collaborative task management tool with real-time updates, drag-and-drop interface, and team collaboration features.</p>
+                        <div class="project-tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">WebSocket</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="C:/Users/ASUS/.gemini/antigravity/brain/fd592fdb-0b97-4fa8-acaa-91482688edb3/project_weather_1764515672287.png" alt="Weather App">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">Live Demo</a>
+                                <a href="#" class="project-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Weather Forecast App</h3>
+                        <p class="project-description">Beautiful weather application with real-time data, forecasts, interactive maps, and location-based services.</p>
+                        <div class="project-tags">
+                            <span class="tag">React Native</span>
+                            <span class="tag">REST API</span>
+                            <span class="tag">Redux</span>
+                            <span class="tag">Maps</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <p class="contact-text">I'm always open to new opportunities and collaborations. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                
+                <a href="contact.html" class="contact-page-button">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+
+                <div class="social-links">
+                    <a href="https://github.com/Gloom-chandru?tab=overview&from=2025-11-01&to=2025-11-30" class="social-icon" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/chandru-m-082b99292" class="social-icon" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://twitter.com" class="social-icon" target="_blank" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="mailto:chandrusanthosh553@gmail.com" class="social-icon" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://codepen.io" class="social-icon" target="_blank" title="CodePen">
+                        <i class="fab fa-codepen"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; ----THANK YOU FOR WATCHING MY PORTOLIO----</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
