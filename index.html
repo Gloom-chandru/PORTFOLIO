@@ -19,21 +19,101 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <!-- Animated Background Elements -->
+        <div class="loading-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="glow-element glow-1"></div>
+            <div class="glow-element glow-2"></div>
+        </div>
+
+        <!-- Particles -->
+        <div class="particles-container">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <!-- Main Loading Content -->
+        <div class="loading-container">
+            <!-- Circular Progress -->
+            <div class="circular-progress">
+                <svg class="progress-svg" viewBox="0 0 100 100">
+                    <defs>
+                        <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f7931e;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
+                    <circle class="progress-circle" cx="50" cy="50" r="45"></circle>
+                </svg>
+                <div class="progress-center">
+                    <span class="progress-number">0%</span>
+                </div>
+            </div>
+
+            <!-- Logo -->
+            <div class="loading-logo">
+                <span class="logo-text">CHANDRU M</span>
+            </div>
+
+            <!-- Animated Text -->
+            <div class="loading-text">
+                <span class="loading-letter">P</span>
+                <span class="loading-letter">O</span>
+                <span class="loading-letter">R</span>
+                <span class="loading-letter">T</span>
+                <span class="loading-letter">F</span>
+                <span class="loading-letter">O</span>
+                <span class="loading-letter">L</span>
+                <span class="loading-letter">I</span>
+                <span class="loading-letter">O</span>
+            </div>
+
+            <!-- Subtitle with animation -->
+            <div class="loading-subtitle">
+                <span class="subtitle-text">Showcasing Skills & Projects</span>
+            </div>
+
+            <!-- Dots animation -->
+            <div class="dots-animation">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </div>
+
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress"></div>
 
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo">CHANDRU M</div>
-            <ul class="nav-links">
-                <li><a href="#hero" class="active">Home</a></li>
-                <li><a href="#stats">Stats</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="nav-content">
+                <div class="logo">CHANDRU M</div>
+                <ul class="nav-links">
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#stats">Stats</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" title="Toggle dark/light theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -216,9 +296,18 @@
         <div class="section-label">MY PROJECTS</div>
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
+            
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="data">Data Analytics</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+            </div>
+
             <div class="projects-grid">
                 <!-- Project 1 -->
-                <div class="project-card">
+                <div class="project-card" data-category="web">
                     <div class="project-image">
                         <img src="C:/Users/ASUS/.gemini/antigravity/brain/fd592fdb-0b97-4fa8-acaa-91482688edb3/project_ecommerce_1764515634488.png" alt="E-Commerce Platform">
                         <div class="project-overlay">
@@ -241,7 +330,7 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="project-card">
+                <div class="project-card" data-category="web">
                     <div class="project-image">
                         <img src="C:/Users/ASUS/.gemini/antigravity/brain/fd592fdb-0b97-4fa8-acaa-91482688edb3/project_taskmanager_1764515652595.png" alt="Task Management App">
                         <div class="project-overlay">
@@ -264,7 +353,7 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="project-card">
+                <div class="project-card" data-category="data">
                     <div class="project-image">
                         <img src="C:/Users/ASUS/.gemini/antigravity/brain/fd592fdb-0b97-4fa8-acaa-91482688edb3/project_weather_1764515672287.png" alt="Weather App">
                         <div class="project-overlay">
@@ -328,7 +417,187 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- JavaScript -->
     <script src="script.js"></script>
+    <script>
+        // ============================================
+        // Theme Toggle
+        // ============================================
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            htmlElement.classList.add('light-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('light-mode');
+            const isLight = htmlElement.classList.contains('light-mode');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // ============================================
+        // Scroll Animations
+        // ============================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all section titles and cards
+        document.querySelectorAll('.section-title, .stat-card, .skill-card, .project-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ============================================
+        // Progress Counter Animation
+        // ============================================
+        function animateProgress() {
+            const progressNumber = document.querySelector('.progress-number');
+            let currentProgress = 0;
+            const target = 100;
+            const duration = 3000;
+            const startTime = Date.now();
+
+            function update() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min((elapsed / duration) * target, target);
+                currentProgress = Math.floor(progress);
+                progressNumber.textContent = currentProgress + '%';
+
+                if (currentProgress < target) {
+                    requestAnimationFrame(update);
+                }
+            }
+
+            update();
+        }
+
+        // ============================================
+        // Skill Animation on Scroll
+        // ============================================
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.skill-card').forEach(card => {
+            skillObserver.observe(card);
+        });
+
+        // ============================================
+        // Project Filter
+        // ============================================
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    
+                    if (filterValue === 'all' || category === filterValue) {
+                        card.classList.remove('hidden');
+                        setTimeout(() => card.style.opacity = '1', 50);
+                    } else {
+                        card.classList.add('hidden');
+                        card.style.opacity = '0';
+                    }
+                });
+            });
+        });
+
+        // ============================================
+        // Loading Screen
+        // ============================================
+        window.addEventListener('load', function() {
+            animateProgress();
+            const loadingScreen = document.getElementById('loadingScreen');
+            
+            setTimeout(function() {
+                loadingScreen.classList.add('fade-out');
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 800);
+            }, 3500);
+        });
+
+        setTimeout(function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen && loadingScreen.style.display !== 'none') {
+                loadingScreen.classList.add('fade-out');
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 800);
+            }
+        }, 4000);
+
+        // ============================================
+        // Navigation Active Link
+        // ============================================
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Show/hide back-to-top button
+            const backToTopBtn = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        // Back to Top Button Click
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>
