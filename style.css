@@ -741,13 +741,6 @@ html.light-mode .theme-toggle {
 html.light-mode .loading-screen {
     background: linear-gradient(-45deg, #ffffff, #f5f5f5, #efefef, #ffffff);
 }
-    right: 0;
-    z-index: 1000;
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: var(--blur-glass);
-    border-bottom: 1px solid rgba(102, 126, 234, 0.1);
-    transition: var(--transition-normal);
-}
 
 nav .container {
     display: flex;
@@ -866,6 +859,291 @@ nav .container {
 .hero-content {
     text-align: center;
     z-index: 1;
+}
+
+/* ============================================ */
+/* Hero Split Layout with Profile Photo         */
+/* ============================================ */
+.hero-split {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    text-align: left;
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-profile {
+    flex-shrink: 0;
+    position: relative;
+    opacity: 0;
+    animation: fadeInRight 1.2s ease forwards 0.6s;
+}
+
+/* Profile Photo Frame */
+.profile-frame {
+    position: relative;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: profileFloat 6s ease-in-out infinite;
+}
+
+.profile-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    position: relative;
+    z-index: 3;
+    border: 4px solid rgba(255, 107, 53, 0.3);
+    transition: all 0.5s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 107, 53, 0.8);
+    box-shadow: 0 25px 80px rgba(255, 107, 53, 0.3);
+}
+
+/* Animated Gradient Border */
+.profile-border-anim {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        #ff6b35,
+        #f7931e,
+        #ffa726,
+        #ff8c42,
+        transparent,
+        transparent,
+        #ff6b35
+    );
+    animation: rotateBorder 4s linear infinite;
+    z-index: 1;
+}
+
+.profile-border-anim::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border-radius: 50%;
+    background: var(--bg-darker);
+    z-index: 2;
+}
+
+/* Glow Effect Behind Photo */
+.profile-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.4) 0%, rgba(247, 147, 30, 0.2) 40%, transparent 70%);
+    animation: glowPulse 3s ease-in-out infinite;
+    z-index: 0;
+}
+
+/* Floating Decoration Dots */
+.profile-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.deco-dot {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+}
+
+.deco-dot-1 {
+    width: 14px;
+    height: 14px;
+    top: 10%;
+    right: -10px;
+    animation: decoFloat1 5s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.deco-dot-2 {
+    width: 10px;
+    height: 10px;
+    bottom: 15%;
+    left: -15px;
+    animation: decoFloat2 6s ease-in-out infinite;
+    opacity: 0.6;
+}
+
+.deco-dot-3 {
+    width: 8px;
+    height: 8px;
+    top: 50%;
+    right: -20px;
+    animation: decoFloat3 4s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+@keyframes profileFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes rotateBorder {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes decoFloat1 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(8px, -12px); }
+}
+
+@keyframes decoFloat2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-10px, 8px); }
+}
+
+@keyframes decoFloat3 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(12px, -8px); }
+}
+
+/* ============================================ */
+/* About Section Photo                          */
+/* ============================================ */
+.about-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.about-photo-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.about-photo-frame {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 3px solid rgba(255, 107, 53, 0.4);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 107, 53, 0.15);
+    transition: all 0.5s ease;
+    z-index: 2;
+}
+
+.about-photo-frame:hover {
+    border-color: var(--primary-orange);
+    transform: translateY(-5px) rotate(-2deg);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 107, 53, 0.25);
+}
+
+.about-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.5s ease;
+}
+
+.about-photo-frame:hover .about-photo {
+    transform: scale(1.08);
+}
+
+.about-photo-bg {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    background: var(--gradient-primary);
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* Responsive for hero split */
+@media (max-width: 1024px) {
+    .hero-split {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .profile-frame {
+        width: 280px;
+        height: 280px;
+    }
+
+    .profile-img {
+        width: 240px;
+        height: 240px;
+    }
+
+    .profile-glow {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-frame {
+        width: 220px;
+        height: 220px;
+    }
+
+    .profile-img {
+        width: 190px;
+        height: 190px;
+    }
+
+    .profile-glow {
+        width: 240px;
+        height: 240px;
+    }
+
+    .about-photo-frame,
+    .about-photo-bg {
+        width: 160px;
+        height: 160px;
+    }
 }
 
 .hero-title {
