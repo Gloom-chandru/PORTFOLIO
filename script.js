@@ -266,6 +266,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener('scroll', updateActiveNav);
 
+    const hamburger = document.querySelector('#hamburger');
+    const navLinksContainer = document.getElementById('navLinks');
+
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
@@ -279,8 +282,20 @@ document.addEventListener('DOMContentLoaded', function () {
                     behavior: 'smooth'
                 });
             }
+
+            if (navLinksContainer && navLinksContainer.classList.contains('mobile-open')) {
+                navLinksContainer.classList.remove('mobile-open');
+                hamburger.classList.remove('active');
+            }
         });
     });
+
+    if (hamburger && navLinksContainer) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinksContainer.classList.toggle('mobile-open');
+        });
+    }
 
     // ============================================
     // PARALLAX EFFECT
