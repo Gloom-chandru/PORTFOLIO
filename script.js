@@ -57,6 +57,29 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // ============================================
+    // THEME PERSISTENCE
+    // ============================================
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+    const storedTheme = localStorage.getItem('portfolioTheme');
+
+    if (storedTheme === 'light') {
+        htmlElement.classList.add('light-mode');
+        if (themeToggle) themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+        htmlElement.classList.remove('light-mode');
+        if (themeToggle) themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isLight = htmlElement.classList.toggle('light-mode');
+            localStorage.setItem('portfolioTheme', isLight ? 'light' : 'dark');
+            themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+    }
+
+    // ============================================
     // SCROLL PROGRESS BAR
     // ============================================
     const scrollProgress = document.querySelector('.scroll-progress');
@@ -375,27 +398,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
-    // ============================================
-    // TYPING EFFECT FOR HERO SUBTITLE
-    // ============================================
-    const subtitle = document.querySelector('.hero-subtitle');
-    if (subtitle) {
-        const text = subtitle.textContent;
-        subtitle.textContent = '';
-        let index = 0;
-
-        setTimeout(() => {
-            const typeInterval = setInterval(() => {
-                if (index < text.length) {
-                    subtitle.textContent += text.charAt(index);
-                    index++;
-                } else {
-                    clearInterval(typeInterval);
-                }
-            }, 50);
-        }, 1000);
-    }
 
     // ============================================
     // RIPPLE EFFECT ON CLICK
