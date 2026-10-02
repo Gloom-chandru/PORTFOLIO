@@ -3,68 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Get in touch with CHANDRU M - Data Analyst">
+    <meta name="description" content="Get in touch with CHANDRU M — AI & Machine Learning Engineer">
     <meta name="author" content="CHANDRU M">
-    <title>Contact Me | CHANDRU M</title>
+    <title>Contact | CHANDRU M — AI & Machine Learning Engineer</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- CSS -->
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="contact-style.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo">CHANDRU M</div>
-            <a href="index.html" class="back-home">
-                <i class="fas fa-arrow-left"></i> Back to Portfolio
-            </a>
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span>CHANDRU M</span>
+                    <span class="logo-badge">AI / ML</span>
+                </a>
+                <div class="nav-right">
+                    <a href="index.html" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Portfolio
+                    </a>
+                    <button class="theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </nav>
 
     <!-- Contact Page Section -->
-    <section class="contact-page">
+    <section class="contact-page" style="padding-top: calc(72px + var(--space-12));">
         <div class="container">
             <div class="contact-grid">
                 <!-- Left Side - Info -->
                 <div class="contact-left">
-                    <h1 class="contact-title">Let's Connect!</h1>
+                    <span class="section-label">Direct Communication</span>
+                    <h1 class="contact-title">Let's Connect</h1>
                     <p class="contact-description">
-                        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out!
+                        I am actively open to discussing machine learning engineering opportunities, research initiatives, and software development projects.
                     </p>
 
-                    <!-- Animated Decorative Element -->
-                    <div class="decorative-motion">
-                        <div class="motion-circle circle-1"></div>
-                        <div class="motion-circle circle-2"></div>
-                        <div class="motion-circle circle-3"></div>
-                        <div class="motion-line"></div>
-                    </div>
-
                     <div class="contact-info">
-                        <div class="info-item">
-                            <i class="fas fa-envelope"></i>
+                        <a href="mailto:chandrusanthosh553@gmail.com" class="info-item" style="color: inherit;">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
                             <div>
                                 <h4>Email</h4>
                                 <p>chandrusanthosh553@gmail.com</p>
                             </div>
-                        </div>
+                        </a>
                         <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                             <div>
                                 <h4>Location</h4>
-                                <p>Available for Remote Work</p>
+                                <p>Tamil Nadu, India (Available for Remote)</p>
                             </div>
                         </div>
                         <div class="info-item">
-                            <i class="fas fa-clock"></i>
+                            <i class="fas fa-clock" aria-hidden="true"></i>
                             <div>
                                 <h4>Response Time</h4>
                                 <p>Within 24 hours</p>
@@ -72,15 +76,15 @@
                         </div>
                     </div>
 
-                    <div class="social-links">
-                        <a href="https://github.com/Gloom-chandru?tab=overview&from=2025-11-01&to=2025-11-30" class="social-icon" target="_blank" title="GitHub">
-                            <i class="fab fa-github"></i>
+                    <div class="social-links" style="margin-top: var(--space-6);">
+                        <a href="https://github.com/Gloom-chandru" class="social-icon" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
+                            <i class="fab fa-github" aria-hidden="true"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/chandru-m-082b99292" class="social-icon" target="_blank" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
+                        <a href="https://www.linkedin.com/in/chandru-m-082b99292/" class="social-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                         </a>
-                        <a href="mailto:chandrusanthosh553@gmail.com" class="social-icon" title="Email">
-                            <i class="fas fa-envelope"></i>
+                        <a href="mailto:chandrusanthosh553@gmail.com" class="social-icon" title="Email" aria-label="Email">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -88,43 +92,42 @@
                 <!-- Right Side - Form -->
                 <div class="contact-right">
                     <div class="form-card">
-                        <h2>Send Me a Message</h2>
+                        <h2>Send a Message</h2>
                         <form class="contact-form" id="contactForm" action="https://formsubmit.co/chandrusanthosh553@gmail.com" method="POST">
-                            <!-- FormSubmit Configuration -->
-                            <input type="hidden" name="_subject" value="New Portfolio Contact Message!">
+                            <input type="hidden" name="_subject" value="New Inquiry from Contact Page!">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
                             
                             <div class="form-group">
                                 <label for="name">
-                                    <i class="fas fa-user"></i> Your Name
+                                    <i class="fas fa-user" aria-hidden="true"></i> Your Name
                                 </label>
-                                <input type="text" id="name" name="name" placeholder="John Doe" required>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Jane Doe" required>
                             </div>
                             
                             <div class="form-group">
                                 <label for="email">
-                                    <i class="fas fa-envelope"></i> Your Email
+                                    <i class="fas fa-envelope" aria-hidden="true"></i> Your Email
                                 </label>
-                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com" required>
                             </div>
                             
                             <div class="form-group">
                                 <label for="subject">
-                                    <i class="fas fa-tag"></i> Subject
+                                    <i class="fas fa-tag" aria-hidden="true"></i> Subject
                                 </label>
-                                <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+                                <input type="text" id="subject" name="subject" class="form-control" placeholder="Project Inquiry / Job Opportunity" required>
                             </div>
                             
                             <div class="form-group">
                                 <label for="message">
-                                    <i class="fas fa-comment-dots"></i> Message
+                                    <i class="fas fa-comment-dots" aria-hidden="true"></i> Message
                                 </label>
-                                <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+                                <textarea id="message" name="message" class="form-control" rows="5" placeholder="Share details about the role or project..." required></textarea>
                             </div>
                             
-                            <button type="submit" class="submit-button">
-                                <i class="fas fa-paper-plane"></i> Send Message
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message
                             </button>
                         </form>
                     </div>
@@ -136,11 +139,13 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 CHANDRU M - Data Analyst. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CHANDRU M. All rights reserved.</p>
+                <p>AI & Machine Learning Engineer</p>
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="contact-script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

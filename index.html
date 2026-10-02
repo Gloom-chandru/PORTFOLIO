@@ -3,118 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Modern portfolio showcasing my skills, projects, and professional journey">
+    <meta name="description" content="Portfolio of CHANDRU M — AI & Data Science Engineer specializing in Machine Learning pipelines, Computer Vision (YOLOv8), Generative AI (LLMs & RAG), and IoT systems.">
+    <meta name="keywords" content="Chandru M, AI Engineer, Machine Learning, Data Science, Portfolio, Computer Vision, YOLO, NLP, Deep Learning, Velammal Institute of Technology">
     <meta name="author" content="CHANDRU M">
-    <title>Portfolio | CHANDRU M</title>
+
+    <!-- Open Graph Metadata -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CHANDRU M | AI & Machine Learning Engineer Portfolio">
+    <meta property="og:description" content="AI & Data Science Student at Velammal Institute of Technology (GPA 8.8). Building ML models, LLM systems, computer vision hazard detection, and IoT telemetry solutions.">
+    <meta property="og:image" content="profile.jpg">
+    <meta property="og:url" content="https://gloom-chandru.github.io/">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CHANDRU M | AI & Machine Learning Engineer Portfolio">
+    <meta name="twitter:description" content="AI & Machine Learning Engineer | Data Scientist specializing in Deep Learning, Computer Vision, and Generative AI.">
+    <meta name="twitter:image" content="profile.jpg">
+
+    <title>CHANDRU M | AI & Machine Learning Engineer Portfolio</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- CSS -->
+    <!-- Core Design System CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Chandru M",
+      "jobTitle": "AI & Machine Learning Engineer",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Velammal Institute of Technology"
+      },
+      "knowsAbout": ["Machine Learning", "Deep Learning", "Computer Vision", "Natural Language Processing", "Generative AI", "Python", "IoT"],
+      "sameAs": [
+        "https://www.linkedin.com/in/chandru-m-082b99292/",
+        "https://github.com/Gloom-chandru"
+      ]
+    }
+    </script>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <!-- Animated Background Elements -->
-        <div class="loading-bg-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-            <div class="shape shape-4"></div>
-            <div class="glow-element glow-1"></div>
-            <div class="glow-element glow-2"></div>
-        </div>
+    <!-- Subtle Scroll Progress -->
+    <div class="scroll-progress" aria-hidden="true"></div>
 
-        <!-- Particles -->
-        <div class="particles-container">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-
-        <!-- Main Loading Content -->
-        <div class="loading-container">
-            <!-- Circular Progress -->
-            <div class="circular-progress">
-                <svg class="progress-svg" viewBox="0 0 100 100">
-                    <defs>
-                        <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#f7931e;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
-                    <circle class="progress-circle" cx="50" cy="50" r="45"></circle>
-                </svg>
-                <div class="progress-center">
-                    <span class="progress-number">0%</span>
-                </div>
-            </div>
-
-            <!-- Logo -->
-            <div class="loading-logo">
-                <span class="logo-text">CHANDRU M</span>
-            </div>
-
-            <!-- Animated Text -->
-            <div class="loading-text">
-                <span class="loading-letter">P</span>
-                <span class="loading-letter">O</span>
-                <span class="loading-letter">R</span>
-                <span class="loading-letter">T</span>
-                <span class="loading-letter">F</span>
-                <span class="loading-letter">O</span>
-                <span class="loading-letter">L</span>
-                <span class="loading-letter">I</span>
-                <span class="loading-letter">O</span>
-            </div>
-
-            <!-- Subtitle with animation -->
-            <div class="loading-subtitle">
-                <span class="subtitle-text">Showcasing Skills & Projects</span>
-            </div>
-
-            <!-- Dots animation -->
-            <div class="dots-animation">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress"></div>
-
-    <!-- Navigation -->
-    <nav>
+    <!-- 1. NAVIGATION -->
+    <nav id="navbar" aria-label="Main Navigation">
         <div class="container">
             <div class="nav-content">
-                <div class="logo">CHANDRU M</div>
+                <a href="#hero" class="logo" aria-label="Chandru M - Home">
+                    <span>CHANDRU M</span>
+                    <span class="logo-badge">AI / ML</span>
+                </a>
+
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#stats">Stats</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#case-studies">Case Studies</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+
                 <div class="nav-right">
-                    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light theme">
-                        <i class="fas fa-moon"></i>
+                    <a href="resume.pdf" class="btn btn-secondary btn-sm" download="CHANDRU_Resume.pdf" title="Download CV">
+                        <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                        <span>Resume</span>
+                    </a>
+                    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light theme" aria-label="Toggle theme">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
                     </button>
-                    <button class="hamburger" id="hamburger" title="Toggle menu" aria-label="Toggle navigation menu">
+                    <button class="hamburger" id="hamburger" title="Toggle navigation menu" aria-label="Toggle menu" aria-expanded="false">
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
@@ -124,590 +94,1017 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="section-label">HOME</div>
-        <div class="hero-background">
-            <img src="hero-bg.png" alt="Abstract gradient background">
+    <!-- 2. HERO SECTION -->
+    <section id="hero" aria-labelledby="heroTitle">
+        <div class="hero-background" aria-hidden="true">
+            <div class="hero-glow-orb"></div>
+            <div class="hero-grid-mesh"></div>
         </div>
-        <div class="container hero-content hero-split">
-            <div class="hero-text">
-                <h1 class="hero-title">Hi, I'm <span style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">CHANDRU M</span></h1>
-                <p class="hero-subtitle">DATA ANALYST</p>
-                <p class="hero-description">Building beautiful, functional, and user-centric digital experiences with modern technologies and innovative design.</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="cta-button">View My Work</a>
-                    <a href="resume.pdf" class="resume-button" download="CHANDRU_Resume.pdf">
-                        <i class="fas fa-download"></i> Download Resume
-                    </a>
+
+        <div class="container">
+            <div class="hero-split">
+                <!-- Left: Hero Text -->
+                <div class="hero-text">
+                    <div class="hero-status-pill">
+                        <span class="pulse-dot"></span>
+                        <span>Open to AI/ML Engineering & Research Roles</span>
+                    </div>
+
+                    <h1 class="hero-title" id="heroTitle">
+                        Hi, I'm <span class="gradient-text">CHANDRU M</span>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        <i class="fas fa-brain" aria-hidden="true"></i> AI & MACHINE LEARNING ENGINEER
+                    </p>
+
+                    <p class="hero-description">
+                        Building robust machine learning pipelines, generative AI solutions, and real-time computer vision systems. Pursuing B.Tech in Artificial Intelligence & Data Science at Velammal Institute of Technology with an academic GPA of <strong>8.8 / 10</strong>.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary" id="heroProjectsBtn">
+                            <i class="fas fa-cubes" aria-hidden="true"></i> Explore Projects
+                        </a>
+                        <a href="resume.pdf" class="btn btn-secondary" download="CHANDRU_Resume.pdf" id="heroResumeBtn">
+                            <i class="fas fa-download" aria-hidden="true"></i> Download Resume
+                        </a>
+                        <a href="#contact" class="btn btn-outline" id="heroContactBtn">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i> Get In Touch
+                        </a>
+                    </div>
+
+                    <div class="hero-social">
+                        <span class="hero-social-label">Connect:</span>
+                        <div class="social-links">
+                            <a href="https://github.com/Gloom-chandru" class="social-icon" target="_blank" rel="noopener noreferrer" title="GitHub Profile" aria-label="GitHub">
+                                <i class="fab fa-github" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/chandru-m-082b99292/" class="social-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                            </a>
+                            <a href="mailto:chandrusanthosh553@gmail.com" class="social-icon" title="Direct Email" aria-label="Email">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-profile">
-                <div class="profile-frame">
-                    <div class="profile-glow"></div>
-                    <div class="profile-border-anim"></div>
-                    <img src="profile.jpg" alt="Chandru M - Data Analyst" class="profile-img">
-                </div>
-                <div class="profile-decoration">
-                    <span class="deco-dot deco-dot-1"></span>
-                    <span class="deco-dot deco-dot-2"></span>
-                    <span class="deco-dot deco-dot-3"></span>
+
+                <!-- Right: Profile Card & Tech Badges -->
+                <div class="hero-profile">
+                    <div class="profile-card-wrapper">
+                        <div class="profile-frame">
+                            <div class="profile-img-inner">
+                                <img src="profile.jpg" alt="Chandru M - AI & Machine Learning Engineer" width="400" height="500" fetchpriority="high">
+                            </div>
+                        </div>
+
+                        <!-- Floating Badges -->
+                        <div class="floating-badge floating-badge-1" aria-label="Academic Standing">
+                            <i class="fas fa-graduation-cap floating-badge-icon" aria-hidden="true"></i>
+                            <div>
+                                <div style="font-size: 0.65rem; color: var(--text-muted);">B.Tech AI & DS</div>
+                                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-primary);">GPA 8.8 / 10</div>
+                            </div>
+                        </div>
+
+                        <div class="floating-badge floating-badge-2" aria-label="Primary Stack">
+                            <i class="fas fa-microchip floating-badge-icon" aria-hidden="true"></i>
+                            <div>
+                                <div style="font-size: 0.65rem; color: var(--text-muted);">Core Stack</div>
+                                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-primary);">PyTorch • YOLO • LLMs</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section id="stats">
+    <!-- 3. PROOF / IMPACT STATS -->
+    <section id="stats" aria-label="Key Qualifications & Verified Impact">
         <div class="container">
-            <h2 class="section-title">Achievements</h2>
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
-                    <div class="stat-number" data-target="15">0</div>
-                    <div class="stat-label">Projects Completed</div>
+                    <div class="stat-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+                    <div class="stat-number" data-target="8.8" data-suffix="/10">0</div>
+                    <div class="stat-label">Academic GPA</div>
+                    <div class="stat-sublabel">Velammal Institute of Technology</div>
                 </div>
+
                 <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-code"></i></div>
-                    <div class="stat-number" data-target="50000">0</div>
-                    <div class="stat-label">Lines of Code</div>
+                    <div class="stat-icon"><i class="fas fa-trophy" aria-hidden="true"></i></div>
+                    <div class="stat-number" data-target="4" data-suffix="+">0</div>
+                    <div class="stat-label">Hackathons & Honors</div>
+                    <div class="stat-sublabel">VISAI 2025, IBM, KEC, ITERYX</div>
                 </div>
+
                 <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-trophy"></i></div>
-                    <div class="stat-number" data-target="8">0</div>
-                    <div class="stat-label">Certifications</div>
+                    <div class="stat-icon"><i class="fas fa-briefcase" aria-hidden="true"></i></div>
+                    <div class="stat-number" data-target="2" data-suffix="">0</div>
+                    <div class="stat-label">Industrial Internships</div>
+                    <div class="stat-sublabel">YBI Foundation & IBM Training</div>
                 </div>
+
                 <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-clock"></i></div>
-                    <div class="stat-number" data-target="5000">0</div>
-                    <div class="stat-label">Hours of Learning</div>
+                    <div class="stat-icon"><i class="fas fa-code-branch" aria-hidden="true"></i></div>
+                    <div class="stat-number" data-target="6" data-suffix="+">0</div>
+                    <div class="stat-label">Deployed Systems</div>
+                    <div class="stat-sublabel">CV, LLM, NLP & IoT Repositories</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
+    <!-- 4. ABOUT SECTION -->
+    <section id="about" aria-labelledby="aboutHeading">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-left">
-                    <div class="about-photo-wrapper fade-in">
-                        <div class="about-photo-ring">
-                            <img src="profile.jpg" alt="Chandru M" class="about-photo">
+            <div class="section-header">
+                <span class="section-label">Academic & Technical Profile</span>
+                <h2 class="section-title" id="aboutHeading">Engineering Intelligent Solutions with Rigor</h2>
+                <p class="section-subtitle">Combining theoretical machine learning principles with practical systems engineering to solve tangible industrial problems.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-narrative">
+                    <p class="about-lead">
+                        I am an AI & Data Science undergraduate at Velammal Institute of Technology with a passion for designing end-to-end machine learning architectures.
+                    </p>
+                    <p class="about-body">
+                        My work spans supervised regression and classification models, deep convolutional networks for real-time computer vision (YOLOv8), retrieval-augmented generation (RAG) with large language models, and hardware-integrated IoT telemetry.
+                    </p>
+                    <p class="about-body">
+                        Through practical experience during my internships at <strong>YBI Foundation</strong> and <strong>IBM Naan Mudhalvan</strong>, as well as competitive hackathons like <strong>VISAI 2025</strong> and the <strong>KEC 30-Hour Hackathon</strong>, I emphasize algorithmic efficiency, reproducible pipelines, and measurable outcomes.
+                    </p>
+
+                    <div class="about-pillars">
+                        <div class="pillar-card">
+                            <i class="fas fa-brain pillar-icon" aria-hidden="true"></i>
+                            <div>
+                                <h3 class="pillar-title">Machine Learning & Deep Learning</h3>
+                                <p class="pillar-desc">Hands-on model development in PyTorch and Scikit-learn, with emphasis on feature engineering, cross-validation, and optimization metrics.</p>
+                            </div>
+                        </div>
+
+                        <div class="pillar-card">
+                            <i class="fas fa-eye pillar-icon" aria-hidden="true"></i>
+                            <div>
+                                <h3 class="pillar-title">Computer Vision & Real-Time Inference</h3>
+                                <p class="pillar-desc">Building and deploying high-frame-rate object detection pipelines using YOLOv8 and OpenCV for critical safety and inspection systems.</p>
+                            </div>
+                        </div>
+
+                        <div class="pillar-card">
+                            <i class="fas fa-network-wired pillar-icon" aria-hidden="true"></i>
+                            <div>
+                                <h3 class="pillar-title">Full-Stack Data & IoT Integration</h3>
+                                <p class="pillar-desc">Connecting edge sensors (ESP32/Arduino) to backend APIs (Flask/Django) and interactive analytical dashboards (Power BI/Streamlit).</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="about-text fade-in">
-                        <h3>Passionate Developer with a Vision</h3>
-                        <p style="margin-bottom: 1rem;">I'm a dedicated developer who loves creating elegant solutions to complex problems. With a strong foundation in both frontend and backend technologies, I bring ideas to life through clean, efficient code and stunning user interfaces.</p>
-                        <p style="margin-bottom: 1rem;">My journey in tech has been driven by curiosity and a constant desire to learn. I believe in writing code that not only works but is maintainable, scalable, and makes a real impact.</p>
-                        <p>When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.</p>
-                    </div>
                 </div>
-                <div class="timeline">
-                    <div class="timeline-item fade-in">
-                        <h3>DATA ANALYST</h3>
-                        <p class="year">AFTER-GRADUATION</p>
-                        <p>Leading development teams and architecting scalable solutions for enterprise clients.</p>
-                    </div>
-                    <div class="timeline-item fade-in">
-                        <h3>DATA SCIENTIST</h3>
-                        <p class="year">AFTER-GRADUATION</p>
-                        <p>Built responsive web applications using modern frameworks and cloud technologies.</p>
-                    </div>
-                    <div class="timeline-item fade-in">
-                        <h3>DATA ENGINEER</h3>
-                        <p class="year">AFTER-GRADUATION</p>
-                        <p>Started my professional journey, learning best practices and contributing to various projects.</p>
-                    </div>
-                    <div class="timeline-item fade-in">
-                        <h3>ARTIFICIAL INTELLIGENCE AND DATA SCIENCE </h3>
-                        <p class="year">2023 - 2027</p>
-                        <p>pursuing, specializing in software engineering and data structures.</p>
+
+                <!-- Academic / Career Snapshot Card -->
+                <div class="about-sidebar">
+                    <h3 class="sidebar-title">
+                        <i class="fas fa-user-check" style="color: var(--accent-cyan);" aria-hidden="true"></i>
+                        Fast Facts
+                    </h3>
+                    <ul class="sidebar-meta-list">
+                        <li class="sidebar-meta-item">
+                            <span class="meta-label">Degree</span>
+                            <span class="meta-value">B.Tech AI & Data Science</span>
+                        </li>
+                        <li class="sidebar-meta-item">
+                            <span class="meta-label">Institution</span>
+                            <span class="meta-value">Velammal Institute of Tech</span>
+                        </li>
+                        <li class="sidebar-meta-item">
+                            <span class="meta-label">Graduation Target</span>
+                            <span class="meta-value">January 2027</span>
+                        </li>
+                        <li class="sidebar-meta-item">
+                            <span class="meta-label">Cumulative GPA</span>
+                            <span class="meta-value" style="color: var(--accent-emerald);">8.8 / 10.0 (Sem 1-5)</span>
+                        </li>
+                        <li class="sidebar-meta-item">
+                            <span class="meta-label">Target Direction</span>
+                            <span class="meta-value">AI/ML Engineering & MSc</span>
+                        </li>
+                        <li class="sidebar-meta-item">
+                            <span class="meta-label">Location</span>
+                            <span class="meta-value">Tamil Nadu, India (Remote OK)</span>
+                        </li>
+                    </ul>
+
+                    <div style="margin-top: var(--space-6);">
+                        <a href="resume.pdf" class="btn btn-primary" style="width: 100%;" download="CHANDRU_Resume.pdf">
+                            <i class="fas fa-download" aria-hidden="true"></i> Download Official Resume
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="section-label">MY SKILLS</div>
+    <!-- 5. SKILLS SECTION (Categorized Technical Stacks — No Arbitrary %) -->
+    <section id="skills" aria-labelledby="skillsHeading">
         <div class="container">
-            <h2 class="section-title">My Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <span class="skill-name">POWER BI</span>
-                        <span class="skill-percentage">95%</span>
+            <div class="section-header text-center">
+                <span class="section-label">Technical Stack</span>
+                <h2 class="section-title" id="skillsHeading">Skills Grounded in Practice</h2>
+                <p class="section-subtitle">Categorized competencies developed through academic coursework, industrial internships, and competitive hackathons.</p>
+            </div>
+
+            <div class="skills-container">
+                <!-- Category 1: AI & ML -->
+                <div class="skill-category-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
+                        <h3 class="category-title">AI & Machine Learning</h3>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--skill-width: 95%"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <span class="skill-name">PYTHON</span>
-                        <span class="skill-percentage">90%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--skill-width: 90%"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <span class="skill-name">SQL</span>
-                        <span class="skill-percentage">88%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--skill-width: 88%"></div>
+                    <div class="skills-badge-wrap">
+                        <span class="tech-badge"><i class="fab fa-python" aria-hidden="true"></i> Scikit-Learn</span>
+                        <span class="tech-badge"><i class="fas fa-project-diagram" aria-hidden="true"></i> PyTorch</span>
+                        <span class="tech-badge"><i class="fas fa-cube" aria-hidden="true"></i> TensorFlow</span>
+                        <span class="tech-badge"><i class="fas fa-camera" aria-hidden="true"></i> OpenCV</span>
+                        <span class="tech-badge"><i class="fas fa-crosshairs" aria-hidden="true"></i> YOLOv8</span>
+                        <span class="tech-badge"><i class="fas fa-language" aria-hidden="true"></i> NLP</span>
+                        <span class="tech-badge"><i class="fas fa-chart-line" aria-hidden="true"></i> Supervised Regression</span>
+                        <span class="tech-badge"><i class="fas fa-shapes" aria-hidden="true"></i> Clustering (K-Means)</span>
+                        <span class="tech-badge"><i class="fas fa-tachometer-alt" aria-hidden="true"></i> Model Evaluation</span>
                     </div>
                 </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <span class="skill-name">EXCEL</span>
-                        <span class="skill-percentage">85%</span>
+
+                <!-- Category 2: Generative AI & NLP -->
+                <div class="skill-category-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
+                        <h3 class="category-title">Generative AI & LLMs</h3>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--skill-width: 85%"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <span class="skill-name">JAVASCRIPT</span>
-                        <span class="skill-percentage">80%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--skill-width: 80%"></div>
+                    <div class="skills-badge-wrap">
+                        <span class="tech-badge"><i class="fas fa-microchip" aria-hidden="true"></i> Groq LLaMA-3.3</span>
+                        <span class="tech-badge"><i class="fas fa-search" aria-hidden="true"></i> Sentence-BERT</span>
+                        <span class="tech-badge"><i class="fas fa-vector-square" aria-hidden="true"></i> Vector Embeddings</span>
+                        <span class="tech-badge"><i class="fas fa-layer-group" aria-hidden="true"></i> RAG Pipelines</span>
+                        <span class="tech-badge"><i class="fas fa-terminal" aria-hidden="true"></i> Prompt Engineering</span>
+                        <span class="tech-badge"><i class="fas fa-file-contract" aria-hidden="true"></i> Document Parsing</span>
                     </div>
                 </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <span class="skill-name">JAVA</span>
-                        <span class="skill-percentage">40%</span>
+
+                <!-- Category 3: Data & Analytics -->
+                <div class="skill-category-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-chart-bar" aria-hidden="true"></i></div>
+                        <h3 class="category-title">Data & Analytics</h3>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--skill-width: 40%"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <span class="skill-name">React</span>
-                        <span class="skill-percentage">40%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--skill-width: 40%"></div>
+                    <div class="skills-badge-wrap">
+                        <span class="tech-badge"><i class="fab fa-python" aria-hidden="true"></i> Pandas</span>
+                        <span class="tech-badge"><i class="fas fa-square-root-alt" aria-hidden="true"></i> NumPy</span>
+                        <span class="tech-badge"><i class="fas fa-chart-pie" aria-hidden="true"></i> Power BI & DAX</span>
+                        <span class="tech-badge"><i class="fas fa-chart-area" aria-hidden="true"></i> Matplotlib & Seaborn</span>
+                        <span class="tech-badge"><i class="fas fa-table" aria-hidden="true"></i> Advanced Excel</span>
+                        <span class="tech-badge"><i class="fas fa-filter" aria-hidden="true"></i> Preprocessing & Cleaning</span>
                     </div>
                 </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <span class="skill-name">UI/UX Design</span>
-                        <span class="skill-percentage">80%</span>
+
+                <!-- Category 4: Development & APIs -->
+                <div class="skill-category-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+                        <h3 class="category-title">Development & APIs</h3>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--skill-width: 80%"></div>
+                    <div class="skills-badge-wrap">
+                        <span class="tech-badge"><i class="fab fa-python" aria-hidden="true"></i> Python 3.x</span>
+                        <span class="tech-badge"><i class="fas fa-pepper-hot" aria-hidden="true"></i> Flask</span>
+                        <span class="tech-badge"><i class="fab fa-python" aria-hidden="true"></i> Django</span>
+                        <span class="tech-badge"><i class="fas fa-server" aria-hidden="true"></i> RESTful APIs</span>
+                        <span class="tech-badge"><i class="fab fa-js" aria-hidden="true"></i> JavaScript</span>
+                        <span class="tech-badge"><i class="fab fa-java" aria-hidden="true"></i> Java</span>
+                        <span class="tech-badge"><i class="fas fa-terminal" aria-hidden="true"></i> C</span>
+                    </div>
+                </div>
+
+                <!-- Category 5: Databases & Storage -->
+                <div class="skill-category-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-database" aria-hidden="true"></i></div>
+                        <h3 class="category-title">Databases & Querying</h3>
+                    </div>
+                    <div class="skills-badge-wrap">
+                        <span class="tech-badge"><i class="fas fa-database" aria-hidden="true"></i> SQL (PostgreSQL/MySQL)</span>
+                        <span class="tech-badge"><i class="fas fa-leaf" aria-hidden="true"></i> MongoDB</span>
+                        <span class="tech-badge"><i class="fas fa-table" aria-hidden="true"></i> Relational Modeling</span>
+                        <span class="tech-badge"><i class="fas fa-bolt" aria-hidden="true"></i> Query Optimization</span>
+                    </div>
+                </div>
+
+                <!-- Category 6: Tools & Hardware/IoT -->
+                <div class="skill-category-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-tools" aria-hidden="true"></i></div>
+                        <h3 class="category-title">Tools & IoT Systems</h3>
+                    </div>
+                    <div class="skills-badge-wrap">
+                        <span class="tech-badge"><i class="fab fa-git-alt" aria-hidden="true"></i> Git & GitHub</span>
+                        <span class="tech-badge"><i class="fab fa-docker" aria-hidden="true"></i> Docker Basics</span>
+                        <span class="tech-badge"><i class="fas fa-laptop-code" aria-hidden="true"></i> VS Code</span>
+                        <span class="tech-badge"><i class="fas fa-microchip" aria-hidden="true"></i> ESP32 / Arduino</span>
+                        <span class="tech-badge"><i class="fas fa-satellite-dish" aria-hidden="true"></i> IoT Sensor Telemetry</span>
+                        <span class="tech-badge"><i class="fab fa-linux" aria-hidden="true"></i> Linux / Bash</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="section-label">MY PROJECTS</div>
+    <!-- 6. FEATURED PROJECTS -->
+    <section id="projects" aria-labelledby="projectsHeading">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            
-            <!-- Filter Buttons -->
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="ai">AI / ML</button>
-                <button class="filter-btn" data-filter="web">Web / Tools</button>
-                <button class="filter-btn" data-filter="iot">IoT / Hardware</button>
+            <div class="section-header text-center">
+                <span class="section-label">Engineered Work</span>
+                <h2 class="section-title" id="projectsHeading">Featured Projects</h2>
+                <p class="section-subtitle">Real-world AI systems, computer vision hazard detectors, and IoT telemetry architectures with public source code.</p>
             </div>
 
+            <!-- Filter Controls -->
+            <div class="filter-buttons" role="tablist" aria-label="Project Categories">
+                <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Projects</button>
+                <button class="filter-btn" data-filter="ai" role="tab" aria-selected="false">AI & Deep Learning</button>
+                <button class="filter-btn" data-filter="data" role="tab" aria-selected="false">NLP & Generative AI</button>
+                <button class="filter-btn" data-filter="iot" role="tab" aria-selected="false">IoT & Systems</button>
+            </div>
+
+            <!-- PRIMARY FEATURED PROJECT: Resume AI -->
+            <article class="featured-primary-card" data-category="ai data">
+                <!-- Visual Showcase Mockup -->
+                <div class="project-showcase-visual">
+                    <div class="project-visual-mockup">
+                        <div class="mockup-header">
+                            <span class="mockup-dot red"></span>
+                            <span class="mockup-dot yellow"></span>
+                            <span class="mockup-dot green"></span>
+                            <span class="mockup-title">resume_analyzer.py — Sentence-BERT + Groq LLaMA-3.3</span>
+                        </div>
+                        <div class="mockup-content">
+                            <div><span class="mockup-code-highlight">> Embedding Engine:</span> all-MiniLM-L6-v2</div>
+                            <div><span class="mockup-code-highlight">> Cosine Match Score:</span> 89.4% alignment</div>
+                            <div><span class="mockup-code-highlight">> Detected Missing Skills:</span> ['RAG Pipelines', 'Docker CI/CD']</div>
+                            <div><span class="mockup-code-highlight">> Groq Synthesis:</span> Generates ATS-optimized bullet recommendations in 1.2s</div>
+                            <div style="margin-top: 8px; color: var(--accent-emerald);"><i class="fas fa-check-circle" aria-hidden="true"></i> Pipeline verified on multi-format PDF resumes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Column -->
+                <div class="featured-primary-info">
+                    <div>
+                        <span class="project-category-tag"><i class="fas fa-star" aria-hidden="true"></i> Flagship Project • Generative AI & NLP</span>
+                        <h3 class="project-main-title">Resume AI — Career Gap Analyzer & Optimizer</h3>
+                        
+                        <div class="project-metrics-pill">
+                            <i class="fas fa-bolt" aria-hidden="true"></i> Under 1.5s Groq LLaMA-3.3 inference latency
+                        </div>
+
+                        <div class="project-problem-solution">
+                            <p class="project-block-desc">
+                                <strong>Problem:</strong> Job applicants lack actionable feedback on why automated ATS algorithms filter out their CVs and how to bridge domain skill gaps.
+                            </p>
+                            <p class="project-block-desc">
+                                <strong>Solution:</strong> An intelligent resume analyzer combining vector semantic similarity via Sentence-BERT with Groq LLaMA-3.3 70B reasoning to score resumes, surface roadmap gaps, and re-write bullet points with ATS precision.
+                            </p>
+                        </div>
+
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Sentence-BERT</span>
+                            <span class="project-tag">Groq LLaMA-3.3</span>
+                            <span class="project-tag">NLP</span>
+                            <span class="project-tag">Streamlit</span>
+                        </div>
+                    </div>
+
+                    <div class="project-action-row">
+                        <a href="https://github.com/Gloom-chandru/resume-ai" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                            <i class="fab fa-github" aria-hidden="true"></i> GitHub Repo
+                        </a>
+                        <button class="btn btn-secondary btn-sm" data-open-modal="resume-ai">
+                            <i class="fas fa-file-alt" aria-hidden="true"></i> Architecture Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- SECONDARY & GRID PROJECTS -->
             <div class="projects-grid">
-                <!-- Project 1: Recommendation Extension -->
-                <div class="project-card" data-category="ai">
-                    <div class="project-image project-icon-bg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display:flex; align-items:center; justify-content:center; min-height:180px;">
-                        <i class="fas fa-puzzle-piece" style="font-size:4rem; color:#fff; opacity:0.85;"></i>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/Gloom-chandru/RECOMMENDATION_EXTENSION" class="project-link" target="_blank">GitHub</a>
-                            </div>
+                <!-- Project 2: Road Pothole Detection -->
+                <article class="project-card" data-category="ai">
+                    <div class="project-card-header">
+                        <div class="project-card-icon" style="background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);">
+                            <i class="fas fa-road" aria-hidden="true"></i>
                         </div>
+                        <span class="badge badge-cyan">Computer Vision</span>
                     </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Recommendation Extension</h3>
-                        <p class="project-description">A browser extension that provides smart, AI-powered content recommendations to users in real time, enhancing browsing experience with personalised suggestions.</p>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">Road Pothole & Defect Detection</h3>
+                        <p class="project-card-desc">
+                            <strong>Problem & Solution:</strong> Automated detection of road surface potholes from streaming vehicle dashcams using a customized YOLOv8 architecture and OpenCV for real-time roadway hazard localization.
+                        </p>
                         <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Browser Extension</span>
-                            <span class="tag">NLP</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">YOLOv8</span>
+                            <span class="project-tag">OpenCV</span>
+                            <span class="project-tag">Computer Vision</span>
                         </div>
                     </div>
-                </div>
+                    <div class="project-card-footer">
+                        <a href="https://github.com/Gloom-chandru/ROAD-PATHOLE-DETECTION" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                            <i class="fab fa-github" aria-hidden="true"></i> Source Code
+                        </a>
+                        <button class="btn btn-secondary btn-sm" data-open-modal="pothole-detection">
+                            Case Study
+                        </button>
+                    </div>
+                </article>
 
-                <!-- Project 2: LaTeX Code to Resume -->
-                <div class="project-card" data-category="web">
-                    <div class="project-image project-icon-bg" style="background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%); display:flex; align-items:center; justify-content:center; min-height:180px;">
-                        <i class="fas fa-file-alt" style="font-size:4rem; color:#fff; opacity:0.85;"></i>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/Gloom-chandru/LATEX-CODE--TO-RESUME" class="project-link" target="_blank">GitHub</a>
-                            </div>
+                <!-- Project 3: IoT Smart Onion Storage System -->
+                <article class="project-card" data-category="iot">
+                    <div class="project-card-header">
+                        <div class="project-card-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                            <i class="fas fa-seedling" aria-hidden="true"></i>
                         </div>
+                        <span class="badge badge-emerald">VISAI 2025 Exhibited</span>
                     </div>
-                    <div class="project-info">
-                        <h3 class="project-title">LaTeX Code to Resume</h3>
-                        <p class="project-description">A tool that converts LaTeX source code into a beautifully formatted, ready-to-use resume/CV PDF, simplifying the process of professional document generation.</p>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">IoT Smart Produce Storage System</h3>
+                        <p class="project-card-desc">
+                            <strong>Problem & Solution:</strong> Prevents post-harvest onion spoilage by continuously monitoring temperature, humidity, and volatile rotting gases with an ESP32 sensor array and automated threshold alerts.
+                        </p>
                         <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">LaTeX</span>
-                            <span class="tag">PDF Generation</span>
-                            <span class="tag">Automation</span>
+                            <span class="project-tag">ESP32</span>
+                            <span class="project-tag">IoT Sensors</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Predictive Spoilage</span>
                         </div>
                     </div>
-                </div>
+                    <div class="project-card-footer">
+                        <a href="https://github.com/Gloom-chandru" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                            <i class="fab fa-github" aria-hidden="true"></i> View Profile
+                        </a>
+                        <button class="btn btn-secondary btn-sm" data-open-modal="onion-storage">
+                            Case Study
+                        </button>
+                    </div>
+                </article>
 
-                <!-- Project 3: Road Pothole Detection -->
-                <div class="project-card" data-category="ai">
-                    <div class="project-image project-icon-bg" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); display:flex; align-items:center; justify-content:center; min-height:180px;">
-                        <i class="fas fa-road" style="font-size:4rem; color:#fff; opacity:0.85;"></i>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/Gloom-chandru/ROAD-PATHOLE-DETECTION" class="project-link" target="_blank">GitHub</a>
-                            </div>
+                <!-- Project 4: Smart Recommendation Extension -->
+                <article class="project-card" data-category="ai data">
+                    <div class="project-card-header">
+                        <div class="project-card-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);">
+                            <i class="fas fa-puzzle-piece" aria-hidden="true"></i>
                         </div>
+                        <span class="badge badge-purple">ML / Browser Tool</span>
                     </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Road Pothole Detection</h3>
-                        <p class="project-description">A computer vision system that detects road potholes from images or live video feeds using deep learning, helping improve road safety and infrastructure monitoring.</p>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">Recommendation Extension</h3>
+                        <p class="project-card-desc">
+                            <strong>Problem & Solution:</strong> Contextual browser extension providing real-time AI-driven content suggestions by parsing webpage DOM context with NLP heuristics to deliver tailored discovery.
+                        </p>
                         <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">OpenCV</span>
-                            <span class="tag">Deep Learning</span>
-                            <span class="tag">YOLO</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">NLP</span>
+                            <span class="project-tag">Browser API</span>
                         </div>
                     </div>
-                </div>
+                    <div class="project-card-footer">
+                        <a href="https://github.com/Gloom-chandru/RECOMMENDATION_EXTENSION" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                            <i class="fab fa-github" aria-hidden="true"></i> Source Code
+                        </a>
+                        <span class="badge badge-cyan" style="font-size: 0.72rem;">NLP Model</span>
+                    </div>
+                </article>
 
-                <!-- Project 4: Resume AI -->
-                <div class="project-card" data-category="ai">
-                    <div class="project-image project-icon-bg" style="background: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%); display:flex; align-items:center; justify-content:center; min-height:180px;">
-                        <i class="fas fa-robot" style="font-size:4rem; color:#fff; opacity:0.85;"></i>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/Gloom-chandru/resume-ai" class="project-link" target="_blank">GitHub</a>
-                            </div>
+                <!-- Project 5: LaTeX Code to Resume Generator -->
+                <article class="project-card" data-category="data">
+                    <div class="project-card-header">
+                        <div class="project-card-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                            <i class="fas fa-file-code" aria-hidden="true"></i>
                         </div>
+                        <span class="badge badge-amber">Developer Automation</span>
                     </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Resume AI</h3>
-                        <p class="project-description">An AI-powered resume builder and analyser that intelligently parses, scores, and suggests improvements to resumes, helping job seekers stand out with optimised profiles.</p>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">LaTeX Code to Resume Pipeline</h3>
+                        <p class="project-card-desc">
+                            <strong>Problem & Solution:</strong> Automated pipeline taking raw LaTeX resume code, dynamically parsing schema fields, and compiling high-standard ATS-friendly CV PDFs ready for distribution.
+                        </p>
                         <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">NLP</span>
-                            <span class="tag">AI</span>
-                            <span class="tag">LLM</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">LaTeX Engine</span>
+                            <span class="project-tag">PDF Generation</span>
+                            <span class="project-tag">Automation</span>
                         </div>
                     </div>
-                </div>
+                    <div class="project-card-footer">
+                        <a href="https://github.com/Gloom-chandru/LATEX-CODE--TO-RESUME" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                            <i class="fab fa-github" aria-hidden="true"></i> Source Code
+                        </a>
+                        <span class="badge badge-amber" style="font-size: 0.72rem;">Compilation Tool</span>
+                    </div>
+                </article>
 
-                <!-- Project 5: GPS Tracker -->
-                <div class="project-card" data-category="iot">
-                    <div class="project-image project-icon-bg" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); display:flex; align-items:center; justify-content:center; min-height:180px;">
-                        <i class="fas fa-map-marker-alt" style="font-size:4rem; color:#e94560; opacity:0.95;"></i>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/Gloom-chandru/GPS_TRACKER" class="project-link" target="_blank">GitHub</a>
-                            </div>
+                <!-- Project 6: Real-Time GPS Tracker -->
+                <article class="project-card" data-category="iot">
+                    <div class="project-card-header">
+                        <div class="project-card-icon" style="background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                         </div>
+                        <span class="badge badge-purple">Geospatial IoT</span>
                     </div>
-                    <div class="project-info">
-                        <h3 class="project-title">GPS Tracker</h3>
-                        <p class="project-description">A real-time GPS tracking system that monitors and displays live location data on a map, useful for asset tracking, fleet management, and personal safety applications.</p>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">Real-Time GPS Fleet & Asset Tracker</h3>
+                        <p class="project-card-desc">
+                            <strong>Problem & Solution:</strong> Hardware-software tracking pipeline that streams real-time geolocation coordinates from hardware modules to an interactive web map dashboard for fleet oversight.
+                        </p>
                         <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">GPS</span>
-                            <span class="tag">IoT</span>
-                            <span class="tag">Maps API</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">IoT</span>
+                            <span class="project-tag">GPS Telemetry</span>
+                            <span class="project-tag">Maps API</span>
                         </div>
                     </div>
-                </div>
-
-                <!-- Project 6: Ayurvedic Monitoring System -->
-                <div class="project-card" data-category="iot">
-                    <div class="project-image project-icon-bg" style="background: linear-gradient(135deg, #134e5e 0%, #71b280 100%); display:flex; align-items:center; justify-content:center; min-height:180px;">
-                        <i class="fas fa-leaf" style="font-size:4rem; color:#fff; opacity:0.85;"></i>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/Gloom-chandru/Ayurvedic-Monitoring-System" class="project-link" target="_blank">GitHub</a>
-                            </div>
-                        </div>
+                    <div class="project-card-footer">
+                        <a href="https://github.com/Gloom-chandru/GPS_TRACKER" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                            <i class="fab fa-github" aria-hidden="true"></i> Source Code
+                        </a>
+                        <span class="badge badge-emerald" style="font-size: 0.72rem;">Live Telemetry</span>
                     </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Ayurvedic Monitoring System</h3>
-                        <p class="project-description">A smart health monitoring system that integrates Ayurvedic principles with IoT sensors to track patient vitals and recommend personalised Ayurvedic remedies and wellness insights.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">IoT</span>
-                            <span class="tag">Health Tech</span>
-                            <span class="tag">Sensors</span>
-                        </div>
-                    </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
+    <!-- 7. PROJECT CASE STUDIES (Interactive Architecture Deep-Dive) -->
+    <section id="case-studies" aria-labelledby="caseHeading">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <p class="contact-text">I'm always open to new opportunities and collaborations. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
-                
-                <a href="contact.html" class="contact-page-button">
-                    <i class="fas fa-envelope"></i> Contact Me
-                </a>
+            <div class="section-header text-center">
+                <span class="section-label">Technical Deep-Dive</span>
+                <h2 class="section-title" id="caseHeading">Project Case Studies</h2>
+                <p class="section-subtitle">Examine the engineering decisions, pipelines, and architectural patterns behind my top technical implementations.</p>
+            </div>
 
-                <div class="social-links">
-                    <a href="https://github.com/Gloom-chandru?tab=overview&from=2025-11-01&to=2025-11-30" class="social-icon" target="_blank" title="GitHub">
-                        <i class="fab fa-github"></i>
+            <!-- Case Study Tabs -->
+            <div class="case-study-tabs" role="tablist">
+                <button class="case-tab-btn active" data-target="case-resume" role="tab" aria-selected="true">
+                    01. Resume AI & Gap Analyzer
+                </button>
+                <button class="case-tab-btn" data-target="case-pothole" role="tab" aria-selected="false">
+                    02. YOLOv8 Pothole Detection
+                </button>
+                <button class="case-tab-btn" data-target="case-storage" role="tab" aria-selected="false">
+                    03. IoT Smart Storage (VISAI 2025)
+                </button>
+            </div>
+
+            <!-- Case 1: Resume AI -->
+            <div class="case-study-content active" id="case-resume" role="tabpanel">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-4); flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <span class="badge badge-cyan" style="margin-bottom: 0.5rem;">Generative AI + Vector NLP</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--text-primary);">Resume AI — Vector Semantic Scoring & Skill Roadmap</h3>
+                    </div>
+                    <a href="https://github.com/Gloom-chandru/resume-ai" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                        <i class="fab fa-github" aria-hidden="true"></i> View on GitHub
                     </a>
-                    <a href="https://www.linkedin.com/in/chandru-m-082b99292" class="social-icon" target="_blank" title="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
+                </div>
+
+                <div class="case-pipeline-grid">
+                    <div class="pipeline-step">
+                        <div class="pipeline-step-num">PHASE 01</div>
+                        <h4 class="pipeline-step-title">PDF Ingestion & NER</h4>
+                        <p class="pipeline-step-desc">Extracts unstructured text streams from candidate CVs, performing entity segmentation for work experience and technical skills.</p>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="pipeline-step-num">PHASE 02</div>
+                        <h4 class="pipeline-step-title">Sentence-BERT Vectors</h4>
+                        <p class="pipeline-step-desc">Computes 384-dimensional dense semantic embeddings using all-MiniLM-L6-v2 to evaluate cosine similarity against target job descriptions.</p>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="pipeline-step-num">PHASE 03</div>
+                        <h4 class="pipeline-step-title">Gap Analysis Matrix</h4>
+                        <p class="pipeline-step-desc">Cross-references missing industry requirements, generating categorical prioritization for required competencies.</p>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="pipeline-step-num">PHASE 04</div>
+                        <h4 class="pipeline-step-title">Groq LLM Synthesis</h4>
+                        <p class="pipeline-step-desc">Leverages Groq-accelerated LLaMA-3.3 70B inference to generate ATS-aligned bullet re-writes and personalized learning roadmaps.</p>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-5); margin-top: var(--space-4);">
+                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--accent-emerald); margin-bottom: var(--space-2);">
+                        <i class="fas fa-check-circle" aria-hidden="true"></i> Outcome & Benchmark
+                    </h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                        Delivers sub-1.5s end-to-end inference for multi-page resumes, providing candidates with structured gap percentages and actionable resume rewrites rather than arbitrary generic tips.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Case 2: Pothole Detection -->
+            <div class="case-study-content" id="case-pothole" role="tabpanel">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-4); flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <span class="badge badge-purple" style="margin-bottom: 0.5rem;">Deep Learning & Edge CV</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--text-primary);">Road Pothole Detection & Real-Time Video Localization</h3>
+                    </div>
+                    <a href="https://github.com/Gloom-chandru/ROAD-PATHOLE-DETECTION" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                        <i class="fab fa-github" aria-hidden="true"></i> View on GitHub
                     </a>
-                    <a href="https://twitter.com" class="social-icon" target="_blank" title="Twitter">
-                        <i class="fab fa-twitter"></i>
+                </div>
+
+                <div class="case-pipeline-grid">
+                    <div class="pipeline-step">
+                        <div class="pipeline-step-num">PHASE 01</div>
+                        <h4 class="pipeline-step-title">Dataset Preparation</h4>
+                        <p class="pipeline-step-desc">Curated and annotated asphalt surface defects across variable weather conditions and lens distortions.</p>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="pipeline-step-num">PHASE 02</div>
+                        <h4 class="pipeline-step-title">YOLOv8 Architecture</h4>
+                        <p class="pipeline-step-desc">Trained a lightweight YOLOv8 convolutional backbone designed for edge vehicle hardware with anchor-free bounding boxes.</p>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="pipeline-step-num">PHASE 03</div>
+                        <h4 class="pipeline-step-title">OpenCV Video Stream</h4>
+                        <p class="pipeline-step-desc">Processes incoming camera feed at 30+ frames per second with spatial non-maximum suppression (NMS).</p>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="pipeline-step-num">PHASE 04</div>
+                        <h4 class="pipeline-step-title">Warning Dispatch</h4>
+                        <p class="pipeline-step-desc">Flags detected hazard coordinates with bounding confidence overlays for municipal road reporting.</p>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-5); margin-top: var(--space-4);">
+                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--accent-emerald); margin-bottom: var(--space-2);">
+                        <i class="fas fa-check-circle" aria-hidden="true"></i> Outcome & Benchmark
+                    </h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                        Maintains real-time detection on standard video streams with robust accuracy on varying pavement shadows, reducing false positives in road maintenance operations.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Case 3: IoT Smart Storage -->
+            <div class="case-study-content" id="case-storage" role="tabpanel">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-4); flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <span class="badge badge-emerald" style="margin-bottom: 0.5rem;">IoT & Predictive Telemetry</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--text-primary);">IoT Smart Produce Storage & Spoilage Prevention System</h3>
+                    </div>
+                    <a href="https://github.com/Gloom-chandru" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                        <i class="fab fa-github" aria-hidden="true"></i> Profile
                     </a>
-                    <a href="mailto:chandrusanthosh553@gmail.com" class="social-icon" title="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://codepen.io" class="social-icon" target="_blank" title="CodePen">
-                        <i class="fab fa-codepen"></i>
-                    </a>
+                </div>
+
+                <div class="case-pipeline-grid">
+                    <div class="pipeline-step">
+                        <div class="pipeline-step-num">PHASE 01</div>
+                        <h4 class="pipeline-step-title">Multi-Sensor Array</h4>
+                        <p class="pipeline-step-desc">Embedded DHT11 and MQ-series gas sensors monitor ambient humidity and microbial decomposition gases inside storage silos.</p>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="pipeline-step-num">PHASE 02</div>
+                        <h4 class="pipeline-step-title">ESP32 Firmware</h4>
+                        <p class="pipeline-step-desc">Microcontroller firmware performs signal filtering, moving-average smoothing, and MQTT telemetry packet serialization.</p>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="pipeline-step-num">PHASE 03</div>
+                        <h4 class="pipeline-step-title">Spoilage Thresholds</h4>
+                        <p class="pipeline-step-desc">Early-warning algorithm detects humidity spikes and VOC gas buildup before visible agricultural decay occurs.</p>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="pipeline-step-num">PHASE 04</div>
+                        <h4 class="pipeline-step-title">Actuation & Alerts</h4>
+                        <p class="pipeline-step-desc">Automatically triggers cooling exhaust fans and pushes live notifications to the warehouse dashboard.</p>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-5); margin-top: var(--space-4);">
+                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--accent-emerald); margin-bottom: var(--space-2);">
+                        <i class="fas fa-check-circle" aria-hidden="true"></i> Exhibition & Validation
+                    </h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                        Exhibited at <strong>VISAI 2025</strong> (15th International Project Competition) under SDG Industry & Innovation in Chennai, and developed during the 30-hour national hackathon at KEC.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- 8 & 9. EXPERIENCE & EDUCATION TIMELINES -->
+    <section id="timeline-section" aria-label="Professional Journey & Education">
+        <div class="container">
+            <div class="timeline-dual-grid">
+                <!-- Column 1: Experience -->
+                <div id="experience">
+                    <h2 class="timeline-column-title">
+                        <i class="fas fa-briefcase" style="color: var(--accent-cyan);" aria-hidden="true"></i>
+                        Work Experience
+                    </h2>
+
+                    <div class="timeline-list">
+                        <!-- YBI Foundation -->
+                        <div class="timeline-entry">
+                            <span class="timeline-date">01/2024 — 03/2024</span>
+                            <h3 class="timeline-role">Machine Learning Intern</h3>
+                            <div class="timeline-org">YBI Foundation</div>
+                            <ul class="timeline-bullets">
+                                <li>Implemented machine learning pipelines for regression and classification using Scikit-Learn and Pandas on real-world datasets.</li>
+                                <li>Conducted exploratory data analysis (EDA), data cleaning, and hyperparameter tuning to optimize model precision and recall.</li>
+                                <li>Validated model generalization through cross-validation and confusion matrix diagnostics.</li>
+                            </ul>
+                        </div>
+
+                        <!-- IBM Naan Mudhalvan -->
+                        <div class="timeline-entry">
+                            <span class="timeline-date">01/2023 — 03/2023</span>
+                            <h3 class="timeline-role">Full Stack & AI Training Intern</h3>
+                            <div class="timeline-org">IBM Naan Mudhalvan Program</div>
+                            <ul class="timeline-bullets">
+                                <li>Completed intensive Full Stack Development training powered by IBM through the Naan Mudhalvan initiative.</li>
+                                <li>Engineered end-to-end web applications integrating front-end interfaces with back-end database services.</li>
+                                <li>Presented an AI-based Employee Performance & Productivity Analysis prototype at the final hackathon.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2: Education -->
+                <div id="education">
+                    <h2 class="timeline-column-title">
+                        <i class="fas fa-graduation-cap" style="color: var(--accent-purple);" aria-hidden="true"></i>
+                        Education
+                    </h2>
+
+                    <div class="timeline-list">
+                        <!-- B.Tech AI & DS -->
+                        <div class="timeline-entry">
+                            <span class="timeline-date">2023 — Expected 01/2027</span>
+                            <h3 class="timeline-role">B.Tech in Artificial Intelligence & Data Science</h3>
+                            <div class="timeline-org">Velammal Institute of Technology — Tamil Nadu</div>
+                            <div style="display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                <span class="badge badge-emerald">GPA: 8.8 / 10.0 (Up to Semester 5)</span>
+                            </div>
+                            <ul class="timeline-bullets">
+                                <li>Core Coursework: Design and Analysis of Algorithms, Machine Learning, Deep Learning, Data Structures, Operating Systems, Database Management Systems.</li>
+                                <li>Consistent top-tier academic standing with focus on mathematical foundations of computing and applied artificial intelligence.</li>
+                                <li>Active participant and lead developer in collegiate hackathons and international innovation competitions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. ACHIEVEMENTS & CERTIFICATIONS -->
+    <section id="achievements" aria-labelledby="achieveHeading">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-label">Verified Honors</span>
+                <h2 class="section-title" id="achieveHeading">Achievements & Certifications</h2>
+                <p class="section-subtitle">Verified recognition from international competitions, hackathons, and accredited technical programs.</p>
+            </div>
+
+            <div class="achievements-grid">
+                <!-- 1: VISAI 2025 -->
+                <div class="achievement-card">
+                    <div class="achievement-badge-header">
+                        <i class="fas fa-award achievement-icon" aria-hidden="true"></i>
+                        <span class="badge badge-amber">International Exhibition</span>
+                    </div>
+                    <h3 class="achievement-title">VISAI 2025 — 15th International Project Competition</h3>
+                    <p class="achievement-desc">
+                        Exhibited the IoT-Based Smart Onion Storage System under SDG: Industry, Innovation & Infrastructure (Chennai, Feb 2025).
+                    </p>
+                    <div class="achievement-meta">Chennai, India • Feb 2025</div>
+                </div>
+
+                <!-- 2: IBM Hackathon -->
+                <div class="achievement-card">
+                    <div class="achievement-badge-header">
+                        <i class="fas fa-trophy achievement-icon" aria-hidden="true"></i>
+                        <span class="badge badge-purple">Final Hackathon</span>
+                    </div>
+                    <h3 class="achievement-title">IBM Naan Mudhalvan Final Hackathon</h3>
+                    <p class="achievement-desc">
+                        Presented an AI-based Employee Performance & Productivity Analysis solution addressing organizational workflow evaluation.
+                    </p>
+                    <div class="achievement-meta">IBM Initiative • Nov 2025</div>
+                </div>
+
+                <!-- 3: KEC Hackathon -->
+                <div class="achievement-card">
+                    <div class="achievement-badge-header">
+                        <i class="fas fa-stopwatch achievement-icon" aria-hidden="true"></i>
+                        <span class="badge badge-cyan">30-Hour Hackathon</span>
+                    </div>
+                    <h3 class="achievement-title">KEC 30-Hour National Hackathon</h3>
+                    <p class="achievement-desc">
+                        Engineered and demonstrated a fully functional IoT-Based Smart Produce Storage prototype under strict 30-hour sprint constraints.
+                    </p>
+                    <div class="achievement-meta">KEC • March 2025</div>
+                </div>
+
+                <!-- 4: ITERYX Hackathon -->
+                <div class="achievement-card">
+                    <div class="achievement-badge-header">
+                        <i class="fas fa-laptop-code achievement-icon" aria-hidden="true"></i>
+                        <span class="badge badge-cyan">24-Hour Hackathon</span>
+                    </div>
+                    <h3 class="achievement-title">ITERYX 24-Hours Hackathon</h3>
+                    <p class="achievement-desc">
+                        Developed an automated applicant tracking base engine (ATS) for intelligent candidate parsing and profile classification.
+                    </p>
+                    <div class="achievement-meta">24-Hour Sprint</div>
+                </div>
+
+                <!-- 5: NPTEL Algorithms -->
+                <div class="achievement-card">
+                    <div class="achievement-badge-header">
+                        <i class="fas fa-certificate achievement-icon" aria-hidden="true"></i>
+                        <span class="badge badge-emerald">Elite 70% Score</span>
+                    </div>
+                    <h3 class="achievement-title">NPTEL — Design and Analysis of Algorithms</h3>
+                    <p class="achievement-desc">
+                        Successfully completed advanced national algorithmic certification with a 70% score covering asymptotic complexity, dynamic programming, and graph algorithms.
+                    </p>
+                    <div class="achievement-meta">NPTEL / IIT Certification</div>
+                </div>
+
+                <!-- 6: NoviTech Data Analytics -->
+                <div class="achievement-card">
+                    <div class="achievement-badge-header">
+                        <i class="fas fa-chart-line achievement-icon" aria-hidden="true"></i>
+                        <span class="badge badge-amber">Professional Cert</span>
+                    </div>
+                    <h3 class="achievement-title">NoviTech — Data Analytics Certification</h3>
+                    <p class="achievement-desc">
+                        Hands-on data analytics and visualization certification focusing on business intelligence pipelines, SQL queries, and Power BI dashboards.
+                    </p>
+                    <div class="achievement-meta">NoviTech Programs</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. CONTACT SECTION -->
+    <section id="contact" aria-labelledby="contactHeading">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Initiate Contact</span>
+                <h2 class="section-title" id="contactHeading">Let's Connect</h2>
+                <p class="section-subtitle">Reach me directly for AI/ML opportunities, academic research collaborations, or software engineering inquiries.</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <!-- Direct Contact Channels -->
+                <div class="contact-info-panel">
+                    <div class="contact-direct-cards">
+                        <a href="mailto:chandrusanthosh553@gmail.com" class="contact-channel-card" title="Send direct email">
+                            <div class="contact-channel-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="contact-channel-label">Direct Email</div>
+                                <div class="contact-channel-value">chandrusanthosh553@gmail.com</div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/chandru-m-082b99292/" target="_blank" rel="noopener noreferrer" class="contact-channel-card" title="LinkedIn Profile">
+                            <div class="contact-channel-icon"><i class="fab fa-linkedin-in" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="contact-channel-label">LinkedIn</div>
+                                <div class="contact-channel-value">chandru-m-082b99292</div>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/Gloom-chandru" target="_blank" rel="noopener noreferrer" class="contact-channel-card" title="GitHub Repositories">
+                            <div class="contact-channel-icon"><i class="fab fa-github" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="contact-channel-label">GitHub</div>
+                                <div class="contact-channel-value">github.com/Gloom-chandru</div>
+                            </div>
+                        </a>
+
+                        <div class="contact-channel-card">
+                            <div class="contact-channel-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="contact-channel-label">Current Location</div>
+                                <div class="contact-channel-value">Tamil Nadu, India (Available for Remote)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: var(--space-2);">
+                        <a href="resume.pdf" class="btn btn-secondary" download="CHANDRU_Resume.pdf">
+                            <i class="fas fa-file-download" aria-hidden="true"></i> Download Resume PDF
+                        </a>
+                    </div>
+                </div>
+
+                <!-- On-Page Quick Form -->
+                <div class="contact-form-panel">
+                    <h3>Send a Direct Message</h3>
+                    <p>Submissions go straight to my inbox via verified form handler.</p>
+
+                    <form action="https://formsubmit.co/chandrusanthosh553@gmail.com" method="POST" id="mainContactForm">
+                        <input type="hidden" name="_subject" value="New Portfolio Inquiry for Chandru M">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+
+                        <div class="form-group">
+                            <label for="formName">Your Name</label>
+                            <input type="text" id="formName" name="name" class="form-control" placeholder="e.g. Dr. Jane Smith / Recruiter" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="formEmail">Email Address</label>
+                            <input type="email" id="formEmail" name="email" class="form-control" placeholder="you@company.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="formMessage">Message</label>
+                            <textarea id="formMessage" name="message" class="form-control" rows="4" placeholder="Discussing an internship opportunity, graduate admission, or technical project..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. FOOTER -->
     <footer>
         <div class="container">
-            <p>&copy; ----THANK YOU FOR WATCHING MY PORTOLIO----</p>
+            <div class="footer-top">
+                <div class="logo">
+                    <span>CHANDRU M</span>
+                    <span class="logo-badge">AI & DATA SCIENCE</span>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/Gloom-chandru" class="social-icon" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/chandru-m-082b99292/" class="social-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                    </a>
+                    <a href="mailto:chandrusanthosh553@gmail.com" class="social-icon" title="Email" aria-label="Email">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 CHANDRU M. All rights reserved.</p>
+                <p style="font-family: var(--font-mono); font-size: 0.78rem;">
+                    B.Tech Artificial Intelligence & Data Science • Velammal Institute of Technology
+                </p>
+            </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" title="Back to top">
-        <i class="fas fa-arrow-up"></i>
+    <button class="back-to-top" id="backToTop" title="Back to top" aria-label="Scroll back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
-    <!-- JavaScript -->
+    <!-- Accessible Modal for Case Studies -->
+    <div class="case-modal-overlay" id="caseStudyModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="case-modal-dialog">
+            <button class="case-modal-close" id="modalClose" aria-label="Close Case Study">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <div id="modalBody">
+                <!-- Dynamically populated by script.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Clean, Modular JavaScript -->
     <script src="script.js"></script>
-    <script>
-        // ============================================
-        // Theme Toggle
-        // ============================================
-        const themeToggle = document.getElementById('themeToggle');
-        const htmlElement = document.documentElement;
-
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        if (savedTheme === 'light') {
-            htmlElement.classList.add('light-mode');
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
-
-        // Toggle theme
-        themeToggle.addEventListener('click', () => {
-            htmlElement.classList.toggle('light-mode');
-            const isLight = htmlElement.classList.contains('light-mode');
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-            themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        });
-
-        // ============================================
-        // Scroll Animations
-        // ============================================
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-up');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all section titles and cards
-        document.querySelectorAll('.section-title, .stat-card, .skill-card, .project-card').forEach(el => {
-            observer.observe(el);
-        });
-
-        // ============================================
-        // Progress Counter Animation
-        // ============================================
-        function animateProgress() {
-            const progressNumber = document.querySelector('.progress-number');
-            let currentProgress = 0;
-            const target = 100;
-            const duration = 3000;
-            const startTime = Date.now();
-
-            function update() {
-                const elapsed = Date.now() - startTime;
-                const progress = Math.min((elapsed / duration) * target, target);
-                currentProgress = Math.floor(progress);
-                progressNumber.textContent = currentProgress + '%';
-
-                if (currentProgress < target) {
-                    requestAnimationFrame(update);
-                }
-            }
-
-            update();
-        }
-
-        // ============================================
-        // Skill Animation on Scroll
-        // ============================================
-        const skillObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                    skillObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.skill-card').forEach(card => {
-            skillObserver.observe(card);
-        });
-
-        // ============================================
-        // Project Filter
-        // ============================================
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filterValue = btn.getAttribute('data-filter');
-
-                projectCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-                    
-                    if (filterValue === 'all' || category === filterValue) {
-                        card.classList.remove('hidden');
-                        setTimeout(() => card.style.opacity = '1', 50);
-                    } else {
-                        card.classList.add('hidden');
-                        card.style.opacity = '0';
-                    }
-                });
-            });
-        });
-
-        // ============================================
-        // Loading Screen
-        // ============================================
-        window.addEventListener('load', function() {
-            animateProgress();
-            const loadingScreen = document.getElementById('loadingScreen');
-            
-            setTimeout(function() {
-                loadingScreen.classList.add('fade-out');
-                setTimeout(function() {
-                    loadingScreen.style.display = 'none';
-                }, 800);
-            }, 3500);
-        });
-
-        setTimeout(function() {
-            const loadingScreen = document.getElementById('loadingScreen');
-            if (loadingScreen && loadingScreen.style.display !== 'none') {
-                loadingScreen.classList.add('fade-out');
-                setTimeout(function() {
-                    loadingScreen.style.display = 'none';
-                }, 800);
-            }
-        }, 4000);
-
-        // ============================================
-        // Navigation Active Link
-        // ============================================
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-
-            // Show/hide back-to-top button
-            const backToTopBtn = document.getElementById('backToTop');
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('show');
-            } else {
-                backToTopBtn.classList.remove('show');
-            }
-        });
-
-        // Back to Top Button Click
-        document.getElementById('backToTop').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // ============================================
-        // Mobile Hamburger Menu
-        // ============================================
-        const hamburger = document.getElementById('hamburger');
-        const navLinksMenu = document.getElementById('navLinks');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinksMenu.classList.toggle('mobile-open');
-        });
-
-        // Close menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinksMenu.classList.remove('mobile-open');
-            });
-        });
-    </script>
 </body>
 </html>
