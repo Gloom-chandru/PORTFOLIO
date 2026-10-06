@@ -1325,61 +1325,223 @@ document.addEventListener('DOMContentLoaded', () => {
     initAiLab();
 
     // ====================================================================
-    // 15. NOVELTY: NEURAL COMMAND TERMINAL & RECRUITER COPILOT (Ctrl+K)
+    // 15. NOVELTY: CRAWLING CHILD MASCOT & INTERACTIVE ACTIONS
     // ====================================================================
-    const initAiTerminal = () => {
+    let triggerCookieFeedGlobal = null;
+
+    const initCrawlingChild = () => {
+        const container = document.getElementById('crawlingChildContainer');
+        const speechBubble = document.getElementById('childSpeechBubble');
+        const speechText = document.getElementById('childSpeechText');
+        const character = document.getElementById('childCharacter');
+        const childSvg = document.getElementById('childSvg');
+        const btnChat = document.getElementById('btnChildChat');
+        const btnCookie = document.getElementById('btnFeedCookie');
+        const btnNap = document.getElementById('btnChildNap');
+        const moodBadge = document.getElementById('babyMoodBadge');
+
+        if (!container) return;
+
+        let posX = 40;
+        let direction = 1; // 1 = right, -1 = left
+        let isHovered = false;
+        let isNapping = false;
+        let isTurning = false;
+
+        // Sound & Animation for Feeding Cookies
+        const triggerCookieFeed = (e) => {
+            if (e && e.stopPropagation) e.stopPropagation();
+            SoundFX.cookieChime();
+
+            // Baby happy hop bounce
+            if (character) {
+                character.classList.remove('hopping');
+                void character.offsetWidth;
+                character.classList.add('hopping');
+            }
+
+            // Spawn floating cookie & candy emojis around baby
+            const rect = container.getBoundingClientRect();
+            const emojis = ['🍪', '⭐', '🍪', '✨', '🍼', '🍬', '🍪'];
+            emojis.forEach((emoji, i) => {
+                const p = document.createElement('div');
+                p.className = 'floating-cookie-particle';
+                p.textContent = emoji;
+                const offsetX = (Math.random() - 0.5) * 80;
+                const offsetY = (Math.random() - 0.5) * 40;
+                p.style.left = `${rect.left + 50 + offsetX}px`;
+                p.style.top = `${rect.top - 15 + offsetY}px`;
+                p.style.fontSize = `${1.2 + Math.random() * 0.7}rem`;
+                p.style.animationDelay = `${i * 0.07}s`;
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 1400);
+            });
+
+            // Baby thank-you message with tech trivia
+            const cookieQuotes = [
+                "OM NOM NOM! 🍪 Thank youuu! Fun fact: Chandru scored 70% Elite in NPTEL Algorithms!",
+                "YUMMY COOKIE! 🍪 Big Bro's YOLOv8 runs at 30+ FPS without breaking a sweat!",
+                "CRUNCH CRUNCH! 🍪 Want to see Big Bro's GPA 8.8 gold stars? Ask me in chat!",
+                "WOOHOO! Sugar power! 🍪 Big Bro built Resume AI with Sentence-BERT & Groq!"
+            ];
+            if (speechText) {
+                speechText.textContent = cookieQuotes[Math.floor(Math.random() * cookieQuotes.length)];
+            }
+            if (moodBadge) {
+                moodBadge.textContent = 'Mood: Sugar Rush! 🍭🍪';
+            }
+        };
+        triggerCookieFeedGlobal = triggerCookieFeed;
+
+        if (btnCookie) {
+            btnCookie.addEventListener('click', triggerCookieFeed);
+        }
+
+        // Nap / Wake Toggle
+        if (btnNap) {
+            btnNap.addEventListener('click', (e) => {
+                e.stopPropagation();
+                isNapping = !isNapping;
+                if (isNapping) {
+                    container.classList.add('napping');
+                    btnNap.innerHTML = '<i class="fas fa-sun"></i> <span>Wake</span>';
+                    if (speechText) speechText.textContent = 'Zzz... Dreaming of neural networks... 💤';
+                    if (moodBadge) moodBadge.textContent = 'Mood: Sleepy Zzz 💤';
+                } else {
+                    container.classList.remove('napping');
+                    btnNap.innerHTML = '<i class="fas fa-bed"></i> <span>Nap</span>';
+                    SoundFX.babyGiggle();
+                    if (speechText) speechText.textContent = "Yaaawn! I'm awake and ready to explore! 👶⚡";
+                    if (moodBadge) moodBadge.textContent = 'Mood: Super Excited! 🍭';
+                }
+            });
+        }
+
+        // Mouse hover pause to let users comfortably click mascot actions
+        container.addEventListener('mouseenter', () => { isHovered = true; });
+        container.addEventListener('mouseleave', () => { isHovered = false; });
+
+        // Crawling Physics Loop: Steps forward every 1s (in sync with CSS crawl kick gait)
+        setInterval(() => {
+            // Respect mobile layout (< 600px) where position is safely docked
+            if (window.innerWidth <= 600) return;
+            if (isHovered || isNapping || isTurning) return;
+
+            const minX = 25;
+            const maxX = Math.max(80, window.innerWidth - 240);
+
+            posX += direction * 35;
+
+            if (posX >= maxX && direction === 1) {
+                posX = maxX;
+                isTurning = true;
+                container.style.transition = 'left 0.8s ease';
+                container.style.left = `${posX}px`;
+                setTimeout(() => {
+                    if (isNapping) { isTurning = false; return; }
+                    direction = -1;
+                    if (childSvg) childSvg.style.transform = 'scaleX(-1)';
+                    setTimeout(() => { isTurning = false; }, 800);
+                }, 1400);
+            } else if (posX <= minX && direction === -1) {
+                posX = minX;
+                isTurning = true;
+                container.style.transition = 'left 0.8s ease';
+                container.style.left = `${posX}px`;
+                setTimeout(() => {
+                    if (isNapping) { isTurning = false; return; }
+                    direction = 1;
+                    if (childSvg) childSvg.style.transform = 'scaleX(1)';
+                    setTimeout(() => { isTurning = false; }, 800);
+                }, 1400);
+            } else {
+                container.style.transition = 'left 1s linear';
+                container.style.left = `${posX}px`;
+            }
+        }, 1000);
+
+        // Rotating Speech Bubble Thoughts
+        const babyThoughts = [
+            "Hiii! I'm crawling to explore Big Bro's AI! Click me! 👶✨",
+            "Big Bro has an 8.8 GPA at Velammal! Isn't he smart?! ⭐",
+            "Vroom vroom! YOLOv8 spots potholes at 30+ FPS! 🚗💨",
+            "Did someone say cookies? Feed me a cookie! 🍪😋",
+            "Sentence-BERT creates 384-D vector embeddings! Woah! 🧠",
+            "Stinky rotten onions can't fool our ESP32 sensor! 🧅🚫",
+            "Groq LLaMA-3.3 generates smart rewrites in 1.5s! ⚡",
+            "Need a high-impact AI/ML engineer? Hire Big Bro! 💼🚀",
+            "Big Bro won honors at VISAI 2025 International Expo! 🏆✨"
+        ];
+        let thoughtIdx = 0;
+        setInterval(() => {
+            if (isNapping) return;
+            thoughtIdx = (thoughtIdx + 1) % babyThoughts.length;
+            if (speechText) {
+                speechText.style.opacity = '0';
+                setTimeout(() => {
+                    speechText.textContent = babyThoughts[thoughtIdx];
+                    speechText.style.opacity = '1';
+                }, 250);
+            }
+        }, 7000);
+    };
+    initCrawlingChild();
+
+    // ====================================================================
+    // 16. NOVELTY: WONDER-KID AI CHATBOT (Childlike & Technically Brilliant)
+    // ====================================================================
+    const initBabyChatbot = () => {
         const modal = document.getElementById('aiTerminalModal');
         const triggerNavBtn = document.getElementById('cmdPaletteBtn');
-        const triggerFloatingBtn = document.getElementById('floatingHudBtn');
-        const closeBtnRed = document.getElementById('terminalCloseBtn');
+        const triggerChildBtn = document.getElementById('btnChildChat');
+        const triggerCharacter = document.getElementById('childCharacter');
+        const triggerSpeechBubble = document.getElementById('childSpeechBubble');
         const closeBtnX = document.getElementById('btnTerminalCloseX');
         const soundBtn = document.getElementById('btnSoundToggle');
         const soundIcon = document.getElementById('soundIcon');
-        const modeChatBtn = document.getElementById('modeChatBtn');
-        const modeCliBtn = document.getElementById('modeCliBtn');
         const terminalForm = document.getElementById('terminalInputForm');
         const terminalInput = document.getElementById('terminalInput');
         const messagesContainer = document.getElementById('chatMessagesContainer');
         const promptChips = document.querySelectorAll('.prompt-chip');
+        const babyMoodBadge = document.getElementById('babyMoodBadge');
 
-        let currentMode = 'chat'; // 'chat' or 'cli'
-
-        const openTerminal = () => {
+        const openDialog = () => {
             if (!modal) return;
-            SoundFX.click();
+            SoundFX.babyGiggle();
             modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
             setTimeout(() => {
                 if (terminalInput) terminalInput.focus();
-            }, 100);
+            }, 120);
         };
 
-        const closeTerminal = () => {
+        const closeDialog = () => {
             if (!modal) return;
+            SoundFX.click();
             modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
         };
 
-        if (triggerNavBtn) triggerNavBtn.addEventListener('click', openTerminal);
-        if (triggerFloatingBtn) triggerFloatingBtn.addEventListener('click', openTerminal);
-        if (closeBtnRed) closeBtnRed.addEventListener('click', closeTerminal);
-        if (closeBtnX) closeBtnX.addEventListener('click', closeTerminal);
+        if (triggerNavBtn) triggerNavBtn.addEventListener('click', openDialog);
+        if (triggerChildBtn) triggerChildBtn.addEventListener('click', openDialog);
+        if (triggerCharacter) triggerCharacter.addEventListener('click', openDialog);
+        if (triggerSpeechBubble) triggerSpeechBubble.addEventListener('click', openDialog);
+        if (closeBtnX) closeBtnX.addEventListener('click', closeDialog);
 
         modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeTerminal();
+            if (e.target === modal) closeDialog();
         });
 
-        // Global Keybindings: Ctrl+K, Cmd+K, Escape
+        // Keybindings: Ctrl+K / Cmd+K and Escape
         document.addEventListener('keydown', (e) => {
             if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
                 e.preventDefault();
-                if (modal.classList.contains('open')) {
-                    closeTerminal();
-                } else {
-                    openTerminal();
-                }
+                if (modal.classList.contains('open')) closeDialog();
+                else openDialog();
             } else if (e.key === 'Escape' && modal.classList.contains('open')) {
-                closeTerminal();
+                closeDialog();
             }
         });
 
@@ -1396,227 +1558,154 @@ document.addEventListener('DOMContentLoaded', () => {
             soundBtn.addEventListener('click', () => {
                 const newState = SoundFX.toggle();
                 updateSoundIcon();
-                if (newState) SoundFX.click();
+                if (newState) SoundFX.babyGiggle();
             });
         }
 
-        // Mode Switching
-        if (modeChatBtn && modeCliBtn) {
-            modeChatBtn.addEventListener('click', () => {
-                currentMode = 'chat';
-                modeChatBtn.classList.add('active');
-                modeCliBtn.classList.remove('active');
-                if (terminalInput) terminalInput.placeholder = "Ask anything about Chandru or type a question...";
-            });
-
-            modeCliBtn.addEventListener('click', () => {
-                currentMode = 'cli';
-                modeCliBtn.classList.add('active');
-                modeChatBtn.classList.remove('active');
-                if (terminalInput) terminalInput.placeholder = "Type command: 'help', 'projects', 'lab', 'resume', 'matrix'...";
-            });
-        }
-
-        // Knowledge Base for Chandru M
-        const queryKnowledge = (q) => {
+        // Childlike & Technically Accurate Knowledge Engine
+        const queryBabyKnowledge = (q) => {
             const query = q.toLowerCase().trim();
 
-            if (query.includes('why hire') || query.includes('strength') || query.includes('summary') || query.includes('hire chandru')) {
+            if (query.includes('why') || query.includes('hire') || query.includes('strength') || query.includes('best') || query.includes('who is')) {
                 return {
-                    title: 'Why Hire Chandru M?',
-                    content: `Chandru combines **high academic rigor (GPA 8.8 / 10 at Velammal Institute of Tech)** with **production-tested ML pipelines**:
+                    title: '👶 Why Big Bro Chandru is a Tech Superhero!',
+                    content: `<p>Goo-goo gaa-gaa! Because Big Bro isn't just someone who watches tutorials — he builds real working AI machines! Look at his superpowers:</p>
                         <ul>
-                            <li><strong>Proven In Hackathons:</strong> VISAI 2025 International Project Exhibition honoree (SDG Industry & Innovation) and KEC 30-Hour Hackathon winner.</li>
-                            <li><strong>Full-Lifecycle AI Engineer:</strong> Not just notebooks — deploys real-time computer vision (YOLOv8 30+ FPS), LLM apps (Sentence-BERT + Groq LLaMA-3.3), and edge microcontrollers (ESP32).</li>
-                            <li><strong>Verified Track Record:</strong> Dual industrial internships at YBI Foundation (ML) & IBM Naan Mudhalvan (Full Stack AI).</li>
-                        </ul>`,
+                            <li><strong>Super-Duper Brain (GPA 8.8 / 10.0):</strong> At Velammal Institute of Technology, he studied super hard across all 5 semesters!</li>
+                            <li><strong>Real Vision Wheels (YOLOv8 30+ FPS):</strong> He trained neural nets that spot road potholes in real time so cars don't go crunch!</li>
+                            <li><strong>Big Brain LLMs (Sentence-BERT + Groq LLaMA-3.3):</strong> He turns resumes into 384-dimensional math vectors and gets rewrites in 1.5 seconds!</li>
+                            <li><strong>Trophy Shelf:</strong> Honored at VISAI 2025 International Exhibition and won the 30-Hour KEC Hackathon!</li>
+                        </ul>
+                        <p>You should hire him right now before another smart company scoops him up! 🎈</p>`,
                     actions: [
-                        { label: 'Explore Projects', href: '#projects' },
-                        { label: 'Download Resume', href: 'resume.pdf', download: true }
+                        { label: '🏃 Crawl to Projects', type: 'scroll', target: '#projects' },
+                        { label: '🧪 Test in AI Lab', type: 'scroll', target: '#ai-lab' },
+                        { label: '📄 Download Resume', type: 'link', target: 'resume.pdf', download: true }
                     ]
                 };
             }
 
-            if (query.includes('resume ai') || query.includes('ats') || query.includes('groq') || query.includes('bert') || query.includes('llm')) {
+            if (query.includes('yolo') || query.includes('bump') || query.includes('pothole') || query.includes('vision') || query.includes('camera') || query.includes('road')) {
                 return {
-                    title: 'Flagship: Resume AI & Skill Roadmap',
-                    content: `Chandru engineered a high-precision ATS gap analyzer:
+                    title: '🚗 Vroom Vroom! Road Bump Vision with YOLOv8!',
+                    content: `<p>Hold onto your juice box! 🧃 When cars drive fast, potholes can pop their tires! Ouchie!</p>
                         <ul>
-                            <li><strong>Sentence-BERT 384-D Embeddings:</strong> Calculates cosine semantic distance between candidate bullets and job specs.</li>
-                            <li><strong>Groq LLaMA-3.3 70B:</strong> Dynamic prompt synthesis delivering optimized rewrites in <strong>under 1.5 seconds</strong>.</li>
-                            <li><strong>Live In-Browser Demo:</strong> Test the vector similarity engine right now in Section 6.5!</li>
-                        </ul>`,
+                            <li><strong>Speedy Fast 30+ FPS:</strong> Big Bro's custom YOLOv8 model runs at 30+ frames per second with OpenCV. That means it looks at the road 30 times in ONE second!</li>
+                            <li><strong>Smart Bounding Boxes:</strong> It draws bright neon boxes right over cracks, crevices, and deep rifts with Non-Maximum Suppression!</li>
+                            <li><strong>Edge-Ready:</strong> Tuned to run inside real car dashcams with low compute!</li>
+                        </ul>
+                        <p>Wanna see it find potholes live right now? You can test it in our AI Lab!</p>`,
                     actions: [
-                        { label: 'Test Live in AI Lab', href: '#ai-lab' },
-                        { label: 'View GitHub Repo', href: 'https://github.com/Gloom-chandru/resume-ai' }
+                        { label: '🧪 Test YOLO Scanner in Lab', type: 'scroll', target: '#ai-lab', tab: 'tabLabYolo' },
+                        { label: '💻 View YOLO GitHub Repo', type: 'link', target: 'https://github.com/Gloom-chandru/ROAD-PATHOLE-DETECTION' }
                     ]
                 };
             }
 
-            if (query.includes('yolo') || query.includes('vision') || query.includes('pothole') || query.includes('cv') || query.includes('camera')) {
+            if (query.includes('resume') || query.includes('ats') || query.includes('bert') || query.includes('groq') || query.includes('magic') || query.includes('llm')) {
                 return {
-                    title: 'Computer Vision: YOLOv8 Road Hazard Detector',
-                    content: `Automated road surface defect detection pipeline:
+                    title: '📄 Magic Words & Vector Math! Resume AI',
+                    content: `<p>Imagine you want to trade your favorite toy card for another card! You need them to match, right?</p>
                         <ul>
-                            <li><strong>YOLOv8 Custom Backbone:</strong> Trained on diverse asphalt asphalt cracks, rifts, and deep potholes.</li>
-                            <li><strong>30+ FPS Edge Stream:</strong> Built with OpenCV for low-latency vehicle dashcam feeds.</li>
-                            <li><strong>Spatial IoU Localization:</strong> Real-time bounding box regression with non-maximum suppression.</li>
-                        </ul>`,
+                            <li><strong>384-D Sentence-BERT Magic:</strong> Big Bro turns boring candidate resumes and job requirements into 384 magic math numbers called vectors! Then he calculates cosine distance to see if they match!</li>
+                            <li><strong>Lightning Groq LLaMA-3.3 70B:</strong> If skills are missing, the super-fast Groq model rewrites bullet points in under <strong>1.5 seconds</strong>!</li>
+                            <li><strong>Zero ATS Rejection:</strong> It beats boring recruiter filter robots effortlessly!</li>
+                        </ul>
+                        <p>You can test the cosine similarity engine right in the AI Lab sandbox!</p>`,
                     actions: [
-                        { label: 'Test YOLO Scanner', href: '#ai-lab' },
-                        { label: 'View GitHub Repo', href: 'https://github.com/Gloom-chandru/ROAD-PATHOLE-DETECTION' }
+                        { label: '🧪 Test Live Cosine Matcher', type: 'scroll', target: '#ai-lab', tab: 'tabLabResume' },
+                        { label: '💻 View Resume AI Repo', type: 'link', target: 'https://github.com/Gloom-chandru/resume-ai' }
                     ]
                 };
             }
 
-            if (query.includes('gpa') || query.includes('college') || query.includes('education') || query.includes('velammal') || query.includes('degree')) {
+            if (query.includes('onion') || query.includes('rot') || query.includes('sensor') || query.includes('visai') || query.includes('iot') || query.includes('esp32')) {
                 return {
-                    title: 'Academic Standing & Education',
-                    content: `<ul>
-                        <li><strong>Degree:</strong> B.Tech in Artificial Intelligence & Data Science (2023 — Exp. Jan 2027)</li>
-                        <li><strong>Institution:</strong> Velammal Institute of Technology, Chennai, Tamil Nadu</li>
-                        <li><strong>GPA:</strong> <span style="color: var(--accent-emerald); font-weight: 700;">8.8 / 10.0</span> (Across Semesters 1 to 5)</li>
-                        <li><strong>National Algorithm Honor:</strong> NPTEL "Design & Analysis of Algorithms" Elite 70% Score</li>
-                    </ul>`,
+                    title: '🧅 P.U.! Stinky Onions & The ESP32 Hero!',
+                    content: `<p>Ewww! Have you ever smelled a rotten onion in the pantry? It smells SO STINKY! 😷</p>
+                        <ul>
+                            <li><strong>VISAI 2025 International Stage:</strong> Big Bro presented this at the VISAI 2025 International Project Exhibition!</li>
+                            <li><strong>Sniffing Decay Gases:</strong> When onions start to spoil, they release tiny invisible NH3 bacterial gases. Big Bro put MQ-137 and DHT11 sensors on an ESP32 chip!</li>
+                            <li><strong>Automatic Hero Fans:</strong> As soon as gas crosses 45 ppm, emergency fans turn on and alert the farmer via MQTT telemetry before visual rot ruins the harvest!</li>
+                        </ul>
+                        <p>We saved all the yummy onions! 🧅🎉</p>`,
                     actions: [
-                        { label: 'View Timeline', href: '#education' }
+                        { label: '🧪 Test Gas Oscilloscope in Lab', type: 'scroll', target: '#ai-lab', tab: 'tabLabIot' }
+                    ]
+                };
+            }
+
+            if (query.includes('gpa') || query.includes('star') || query.includes('education') || query.includes('college') || query.includes('velammal') || query.includes('grade')) {
+                return {
+                    title: '⭐ Big Bro\'s Gold Stars & Report Card!',
+                    content: `<p>Look look look! Look at all his shiny gold stars! ⭐⭐⭐⭐⭐</p>
+                        <ul>
+                            <li><strong>Velammal Institute of Technology:</strong> B.Tech in Artificial Intelligence & Data Science (2023 — Exp. 2027).</li>
+                            <li><strong>8.8 / 10.0 Cumulative GPA:</strong> Maintained high first-class academic excellence across Semesters 1 to 5!</li>
+                            <li><strong>NPTEL Elite 70%:</strong> Conquered 'Design & Analysis of Algorithms' with National Elite Certification!</li>
+                        </ul>
+                        <p>Big Bro is super smart and does all his homework AND builds AI robots!</p>`,
+                    actions: [
+                        { label: '🎓 View Education Timeline', type: 'scroll', target: '#education' }
+                    ]
+                };
+            }
+
+            if (query.includes('cookie') || query.includes('feed') || query.includes('snack') || query.includes('eat')) {
+                return {
+                    title: '🍪 NOM NOM NOM! Best Friend Ever!',
+                    content: `<p>YAAAAY! Thank you for the yummy cookie! 🍪✨ My tummy is so happy!</p>
+                        <p>Did you know Big Bro also loves solving complex algorithms while eating snacks? Here is a secret: Big Bro completed two big internships at <strong>YBI Foundation</strong> (Machine Learning) and <strong>IBM Naan Mudhalvan</strong> (Full Stack AI)! Ask me anything else or give me another cookie anytime!</p>`,
+                    actions: [
+                        { label: '🍪 Give Another Cookie!', type: 'cookie' },
+                        { label: '💼 View Experience', type: 'scroll', target: '#experience' }
+                    ]
+                };
+            }
+
+            if (query.includes('secret') || query.includes('tell me a secret') || query.includes('fun fact')) {
+                return {
+                    title: '🤫 Pssst! Big Bro\'s Secret Superpower!',
+                    content: `<p>Come closer... Big Bro coded for 30 straight hours at the KEC National Hackathon! While other teams fell asleep, Chandru stayed awake debugging ESP32 microcontrollers and won the grand championship! He NEVER gives up on hard problems! 💪⚡</p>`,
+                    actions: [
+                        { label: '🏃 Crawl to Projects', type: 'scroll', target: '#projects' }
                     ]
                 };
             }
 
             if (query.includes('contact') || query.includes('email') || query.includes('reach') || query.includes('phone') || query.includes('linkedin')) {
                 return {
-                    title: 'Direct Contact Details',
-                    content: `<ul>
-                        <li><strong>Email:</strong> <a href="mailto:chandrusanthosh553@gmail.com" style="color: var(--accent-cyan);">chandrusanthosh553@gmail.com</a></li>
-                        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/chandru-m-082b99292/" target="_blank" style="color: var(--accent-cyan);">linkedin.com/in/chandru-m-082b99292</a></li>
-                        <li><strong>GitHub:</strong> <a href="https://github.com/Gloom-chandru" target="_blank" style="color: var(--accent-cyan);">github.com/Gloom-chandru</a></li>
-                        <li><strong>Location:</strong> Tamil Nadu, India (Available for Remote & Relocation)</li>
-                    </ul>`,
-                    actions: [
-                        { label: 'Open Contact Form', href: '#contact' }
-                    ]
-                };
-            }
-
-            if (query.includes('iot') || query.includes('storage') || query.includes('onion') || query.includes('esp32') || query.includes('visai')) {
-                return {
-                    title: 'IoT Produce Storage & Spoilage Prevention',
-                    content: `Exhibited at the prestigious <strong>VISAI 2025</strong> International Competition:
+                    title: '📬 Want to send Big Bro a message?',
+                    content: `<p>Yayyy! Big Bro would LOVE to talk to you! Here's how to reach him:</p>
                         <ul>
-                            <li><strong>ESP32 Sensor Array:</strong> Multi-channel telemetry of microclimate humidity, temperature, and NH3 bacterial decay gases.</li>
-                            <li><strong>Automated Mitigation:</strong> Actuates exhaust ventilation fans and MQTT emergency telemetry before visual crop rot begins.</li>
-                            <li><strong>Hackathon Built:</strong> Developed during the 30-Hour KEC National Hackathon sprint.</li>
-                        </ul>`,
+                            <li><strong>Email:</strong> <a href="mailto:chandrusanthosh553@gmail.com" style="color: var(--accent-cyan); text-decoration: underline;">chandrusanthosh553@gmail.com</a></li>
+                            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/chandru-m-082b99292/" target="_blank" style="color: var(--accent-cyan); text-decoration: underline;">linkedin.com/in/chandru-m-082b99292</a></li>
+                            <li><strong>Location:</strong> Tamil Nadu, India (Ready to work Remotely or Relocate!)</li>
+                        </ul>
+                        <p>He checks his inbox all the time! Go say hello!</p>`,
                     actions: [
-                        { label: 'Test Telemetry Oscilloscope', href: '#ai-lab' }
+                        { label: '💬 Open Contact Form', type: 'scroll', target: '#contact' },
+                        { label: '📄 Download Official Resume', type: 'link', target: 'resume.pdf', download: true }
                     ]
                 };
             }
 
-            // General / Fallback Answer
+            // General / Friendly Child Fallback
             return {
-                title: 'Chandru M — AI / ML Systems Engineer',
-                content: `Chandru is an AI & Data Science engineer with an 8.8 GPA at Velammal Institute of Technology, specializing in:
+                title: '👶 Big Bro Chandru\'s Super AI Assistant!',
+                content: `<p>Hiii! I love talking about Big Bro Chandru! He's an AI & ML Engineer with an <strong>8.8 GPA</strong> who builds:</p>
                     <ul>
-                        <li><strong>Machine Learning:</strong> Scikit-learn, PyTorch, Supervised classification, cross-validation.</li>
-                        <li><strong>Computer Vision:</strong> Real-time YOLOv8 hazard localization at 30+ FPS, OpenCV.</li>
-                        <li><strong>Generative AI:</strong> Sentence-BERT 384-D vector search, Groq LLaMA-3.3 70B, RAG.</li>
-                        <li><strong>Edge IoT:</strong> ESP32 microcontrollers, MQTT telemetry, sensor anomaly detection.</li>
+                        <li><strong>Real-time Computer Vision:</strong> YOLOv8 road hazard detection at 30+ FPS!</li>
+                        <li><strong>GenAI & Embeddings:</strong> Sentence-BERT 384-D vector search & Groq LLaMA-3.3!</li>
+                        <li><strong>Edge IoT & Sensors:</strong> ESP32 smart storage honored at VISAI 2025!</li>
                     </ul>
-                    Ask about specific projects, hackathons, GPA, or test the in-browser AI Lab!`,
+                    <p>Try clicking one of my toy buttons above, or ask: <em>'Why hire Big Bro?'</em> or give me a cookie! 🍪✨</p>`,
                 actions: [
-                    { label: 'Launch AI Lab', href: '#ai-lab' },
-                    { label: 'Download Resume', href: 'resume.pdf', download: true }
+                    { label: '🏃 Crawl to Projects', type: 'scroll', target: '#projects' },
+                    { label: '🧪 Explore AI Lab', type: 'scroll', target: '#ai-lab' },
+                    { label: '📄 Download Resume', type: 'link', target: 'resume.pdf', download: true }
                 ]
             };
-        };
-
-        const executeCli = (cmd) => {
-            const command = cmd.toLowerCase().trim();
-
-            if (command === 'help') {
-                return `AVAILABLE COMMANDS:
-  projects   - Navigate to featured projects
-  skills     - View technical competencies matrix
-  lab        - Jump to interactive AI Engineering Lab
-  yolo       - Launch YOLOv8 computer vision scanner
-  resume     - Download Chandru M official resume PDF
-  contact    - Go to direct contact details
-  theme      - Toggle between Dark and Light mode
-  sound      - Toggle Web Audio UI sound effects
-  matrix     - Render system architecture ASCII art
-  clear      - Clear terminal console history`;
-            }
-
-            if (command === 'projects') {
-                closeTerminal();
-                window.location.hash = '#projects';
-                return 'Navigating to #projects...';
-            }
-
-            if (command === 'skills') {
-                closeTerminal();
-                window.location.hash = '#skills';
-                return 'Navigating to #skills...';
-            }
-
-            if (command === 'lab') {
-                closeTerminal();
-                window.location.hash = '#ai-lab';
-                return 'Launching Interactive AI Engineering Lab...';
-            }
-
-            if (command === 'yolo') {
-                closeTerminal();
-                window.location.hash = '#ai-lab';
-                const yoloTab = document.getElementById('tabLabYolo');
-                if (yoloTab) yoloTab.click();
-                return 'Opening YOLOv8 defect scanner...';
-            }
-
-            if (command === 'resume') {
-                window.open('resume.pdf', '_blank');
-                return 'Initiating resume PDF download...';
-            }
-
-            if (command === 'contact') {
-                closeTerminal();
-                window.location.hash = '#contact';
-                return 'Navigating to #contact...';
-            }
-
-            if (command === 'theme') {
-                const themeBtn = document.getElementById('themeToggle');
-                if (themeBtn) themeBtn.click();
-                return 'Switched color theme.';
-            }
-
-            if (command === 'sound') {
-                const s = SoundFX.toggle();
-                updateSoundIcon();
-                return `Sound effects: ${s ? 'ENABLED (Web Audio synthesizer active)' : 'DISABLED (Muted)'}`;
-            }
-
-            if (command === 'clear') {
-                if (messagesContainer) messagesContainer.innerHTML = '';
-                return 'Console cleared.';
-            }
-
-            if (command === 'matrix') {
-                return `[SYSTEM ARCHITECTURE STACK]
-┌──────────────────────────────────────────────┐
-│ CORE: PyTorch • Scikit-Learn • Python 3.10   │
-│ VISION: YOLOv8 • OpenCV • 30+ FPS Edge       │
-│ GENAI: Groq LLaMA-3.3 70B • Sentence-BERT    │
-│ IOT: ESP32 • DHT11 • MQ-137 • MQTT Telemetry │
-│ ACADEMIC: GPA 8.8/10 • Velammal Inst of Tech │
-└──────────────────────────────────────────────┘`;
-            }
-
-            // Fallback for CLI: run through knowledge engine
-            const res = queryKnowledge(command);
-            return `[RESPONSE]: ${res.title}\n${res.content.replace(/<[^>]*>/g, '')}`;
         };
 
         const postMessage = (text) => {
@@ -1630,42 +1719,82 @@ document.addEventListener('DOMContentLoaded', () => {
             userMsg.textContent = query;
             messagesContainer.appendChild(userMsg);
 
-            // Generate AI / CLI response
-            setTimeout(() => {
-                const aiMsg = document.createElement('div');
-                aiMsg.className = 'chat-bubble-ai';
-
-                if (currentMode === 'cli') {
-                    const output = executeCli(query);
-                    aiMsg.innerHTML = `<pre style="font-family: var(--font-mono); font-size: 0.8rem; margin: 0; white-space: pre-wrap; color: var(--accent-cyan);">${output}</pre>`;
-                } else {
-                    const res = queryKnowledge(query);
-                    aiMsg.innerHTML = `
-                        <h4><i class="fas fa-brain"></i> ${res.title}</h4>
-                        <div>${res.content}</div>
-                        ${res.actions ? `
-                            <div class="chat-actions-row">
-                                ${res.actions.map(a => `
-                                    <a href="${a.href}" ${a.download ? 'download' : ''} class="chat-action-btn" target="${a.href.startsWith('http') ? '_blank' : '_self'}">
-                                        <i class="fas fa-arrow-right"></i> ${a.label}
-                                    </a>
-                                `).join('')}
-                            </div>
-                        ` : ''}
-                    `;
-
-                    // Close terminal if user clicks an internal jump link
-                    aiMsg.querySelectorAll('.chat-action-btn[href^="#"]').forEach(btn => {
-                        btn.addEventListener('click', closeTerminal);
-                    });
-                }
-
-                messagesContainer.appendChild(aiMsg);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                SoundFX.click();
-            }, 120);
+            // Append Thinking bubble
+            const thinkingMsg = document.createElement('div');
+            thinkingMsg.className = 'chat-bubble-baby';
+            thinkingMsg.style.fontStyle = 'italic';
+            thinkingMsg.style.opacity = '0.7';
+            thinkingMsg.innerHTML = '<i class="fas fa-spinner fa-spin"></i> BabyBot is giggling & thinking... 🍼';
+            messagesContainer.appendChild(thinkingMsg);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
             if (terminalInput) terminalInput.value = '';
+
+            setTimeout(() => {
+                thinkingMsg.remove();
+
+                // If user asked to crawl to projects directly
+                if (query.toLowerCase().includes('crawl to projects')) {
+                    closeDialog();
+                    const projectsSection = document.getElementById('projects');
+                    if (projectsSection) projectsSection.scrollIntoView({ behavior: 'smooth' });
+                    SoundFX.babyGiggle();
+                    return;
+                }
+
+                const res = queryBabyKnowledge(query);
+                const babyMsg = document.createElement('div');
+                babyMsg.className = 'chat-bubble-baby';
+
+                babyMsg.innerHTML = `
+                    <h4>${res.title}</h4>
+                    <div>${res.content}</div>
+                    ${res.actions ? `
+                        <div class="chat-actions-row">
+                            ${res.actions.map(a => `
+                                ${a.type === 'link' ? `
+                                    <a href="${a.target}" ${a.download ? 'download' : ''} class="chat-action-btn" target="${a.target.startsWith('http') ? '_blank' : '_self'}">
+                                        <i class="fas fa-arrow-right"></i> ${a.label}
+                                    </a>
+                                ` : `
+                                    <button class="chat-action-btn" data-action="${a.type}" data-target="${a.target || ''}" data-tab="${a.tab || ''}">
+                                        <i class="fas fa-arrow-right"></i> ${a.label}
+                                    </button>
+                                `}
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                `;
+
+                // Handle interactive action button clicks
+                babyMsg.querySelectorAll('button.chat-action-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const actionType = btn.getAttribute('data-action');
+                        const targetId = btn.getAttribute('data-target');
+                        const tabId = btn.getAttribute('data-tab');
+
+                        if (actionType === 'scroll') {
+                            closeDialog();
+                            if (targetId) {
+                                const targetEl = document.querySelector(targetId);
+                                if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
+                            }
+                            if (tabId) {
+                                const tabEl = document.getElementById(tabId);
+                                if (tabEl) setTimeout(() => tabEl.click(), 400);
+                            }
+                            SoundFX.babyGiggle();
+                        } else if (actionType === 'cookie') {
+                            if (triggerCookieFeedGlobal) triggerCookieFeedGlobal();
+                            postMessage("Give me another cookie!");
+                        }
+                    });
+                });
+
+                messagesContainer.appendChild(babyMsg);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                SoundFX.babyGiggle();
+            }, 320);
         };
 
         if (terminalForm) {
@@ -1678,10 +1807,10 @@ document.addEventListener('DOMContentLoaded', () => {
         promptChips.forEach(chip => {
             chip.addEventListener('click', () => {
                 const q = chip.getAttribute('data-query');
-                postMessage(q);
+                if (q) postMessage(q);
             });
         });
     };
-    initAiTerminal();
+    initBabyChatbot();
 });
 
