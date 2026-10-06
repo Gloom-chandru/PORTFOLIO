@@ -483,6 +483,49 @@ document.addEventListener('DOMContentLoaded', () => {
                     osc.start();
                     osc.stop(ctx.currentTime + 0.2);
                 } catch (e) {}
+            },
+            babyGiggle: () => {
+                if (!enabled) return;
+                try {
+                    const ctx = getContext();
+                    if (!ctx) return;
+                    const pitches = [580, 720, 880, 1050, 1280];
+                    pitches.forEach((f, idx) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sine';
+                        const t = ctx.currentTime + idx * 0.045;
+                        osc.frequency.setValueAtTime(f, t);
+                        osc.frequency.exponentialRampToValueAtTime(f * 1.2, t + 0.038);
+                        gain.gain.setValueAtTime(0.07, t);
+                        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.04);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(t);
+                        osc.stop(t + 0.042);
+                    });
+                } catch (e) {}
+            },
+            cookieChime: () => {
+                if (!enabled) return;
+                try {
+                    const ctx = getContext();
+                    if (!ctx) return;
+                    const notes = [523.25, 659.25, 783.99, 1046.5];
+                    notes.forEach((freq, i) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'triangle';
+                        const t = ctx.currentTime + i * 0.07;
+                        osc.frequency.setValueAtTime(freq, t);
+                        gain.gain.setValueAtTime(0.08, t);
+                        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.28);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(t);
+                        osc.stop(t + 0.3);
+                    });
+                } catch (e) {}
             }
         };
     })();
