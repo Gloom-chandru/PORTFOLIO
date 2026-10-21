@@ -2022,6 +2022,10 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .workflow-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .contact-wrapper {
         grid-template-columns: 1fr;
     }
@@ -2067,6 +2071,10 @@ footer {
     }
 
     .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .workflow-steps {
         grid-template-columns: 1fr;
     }
 
@@ -3110,8 +3118,9 @@ footer {
     to { box-shadow: 0 0 25px rgba(239, 68, 68, 0.5); }
 }
 
-/* --- 4. NOVELTY: CRAWLING CHILD MASCOT & WONDER-KID CHATBOT --- */
-.crawling-child-container {
+/* --------------------------------------------------------------------
+   RESPONSIVE MEDIA QUERIES
+   -------------------------------------------------------------------- */
     position: fixed;
     bottom: 12px;
     left: 40px;
