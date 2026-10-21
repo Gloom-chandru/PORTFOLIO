@@ -1076,6 +1076,86 @@ html.light-mode .tech-badge {
 }
 
 /* --------------------------------------------------------------------
+   WORKFLOW SECTION (HOW I BUILD INTELLIGENT SYSTEMS)
+   -------------------------------------------------------------------- */
+#workflow {
+    background: linear-gradient(180deg, transparent 0%, rgba(13, 20, 32, 0.4) 50%, transparent 100%);
+}
+
+.workflow-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+}
+
+.workflow-step {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    position: relative;
+    transition: all var(--transition-normal);
+}
+
+.workflow-step::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.workflow-step:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-md);
+}
+
+.workflow-step:hover::before {
+    opacity: 1;
+}
+
+.workflow-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: rgba(98, 230, 196, 0.1);
+    color: var(--accent-cyan);
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: var(--space-4);
+}
+
+.workflow-step-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.workflow-step-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.workflow-step-desc {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------
    FEATURED PROJECTS SECTION
    -------------------------------------------------------------------- */
 #projects {
