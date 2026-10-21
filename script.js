@@ -1351,7 +1351,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Sound & Animation for Feeding Cookies
         const triggerCookieFeed = (e) => {
             if (e && e.stopPropagation) e.stopPropagation();
-            SoundFX.cookieChime();
+            
 
             // Baby happy hop bounce
             if (character) {
@@ -1410,7 +1410,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     container.classList.remove('napping');
                     btnNap.innerHTML = '<i class="fas fa-bed"></i> <span>Nap</span>';
-                    SoundFX.babyGiggle();
+                    
                     if (speechText) speechText.textContent = "Yaaawn! I'm awake and ready to explore! 👶⚡";
                     if (moodBadge) moodBadge.textContent = 'Mood: Super Excited! 🍭';
                 }
@@ -1507,7 +1507,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const openDialog = () => {
             if (!modal) return;
-            SoundFX.babyGiggle();
+            
             modal.classList.add('open');
             modal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
@@ -1558,7 +1558,7 @@ document.addEventListener('DOMContentLoaded', () => {
             soundBtn.addEventListener('click', () => {
                 const newState = SoundFX.toggle();
                 updateSoundIcon();
-                if (newState) SoundFX.babyGiggle();
+                if (newState) 
             });
         }
 
@@ -1738,7 +1738,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     closeDialog();
                     const projectsSection = document.getElementById('projects');
                     if (projectsSection) projectsSection.scrollIntoView({ behavior: 'smooth' });
-                    SoundFX.babyGiggle();
+                    
                     return;
                 }
 
@@ -1783,7 +1783,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 const tabEl = document.getElementById(tabId);
                                 if (tabEl) setTimeout(() => tabEl.click(), 400);
                             }
-                            SoundFX.babyGiggle();
+                            
                         } else if (actionType === 'cookie') {
                             if (triggerCookieFeedGlobal) triggerCookieFeedGlobal();
                             postMessage("Give me another cookie!");
@@ -1793,7 +1793,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 messagesContainer.appendChild(babyMsg);
                 messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                SoundFX.babyGiggle();
+                
             }, 320);
         };
 
