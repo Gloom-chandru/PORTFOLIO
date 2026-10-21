@@ -9,24 +9,24 @@
    DESIGN SYSTEM TOKENS
    -------------------------------------------------------------------- */
 :root {
-    /* Color Palette - Deep Tech Obsidian & Neural Accents */
-    --bg-primary: #090d16;
-    --bg-secondary: #0f1629;
-    --bg-tertiary: #162038;
-    --bg-card: rgba(18, 26, 47, 0.75);
+    /* Color Palette - Intelligence Lab (Spec Colors) */
+    --bg-primary: #080B12;
+    --bg-secondary: #0D1420;
+    --bg-tertiary: #111B2A;
+    --bg-card: rgba(17, 27, 42, 0.75);
     --bg-card-hover: rgba(24, 35, 63, 0.9);
-    --bg-glass: rgba(15, 22, 41, 0.7);
+    --bg-glass: rgba(13, 20, 32, 0.7);
     --bg-elevated: #1e293b;
 
     /* Text Colors */
-    --text-primary: #f8fafc;
+    --text-primary: #F4F7FC;
     --text-secondary: #cbd5e1;
-    --text-muted: #94a3b8;
+    --text-muted: #A7B3C7;
     --text-subtle: #64748b;
 
     /* Accents */
-    --accent-cyan: #06b6d4;
-    --accent-cyan-glow: rgba(6, 182, 212, 0.25);
+    --accent-cyan: #62E6C4;
+    --accent-cyan-glow: rgba(98, 230, 196, 0.25);
     --accent-blue: #3b82f6;
     --accent-purple: #8b5cf6;
     --accent-indigo: #6366f1;
