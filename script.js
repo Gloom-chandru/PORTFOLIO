@@ -1329,163 +1329,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ====================================================================
     let triggerCookieFeedGlobal = null;
 
-    const initCrawlingChild = () => {
-        const container = document.getElementById('crawlingChildContainer');
-        const speechBubble = document.getElementById('childSpeechBubble');
-        const speechText = document.getElementById('childSpeechText');
-        const character = document.getElementById('childCharacter');
-        const childSvg = document.getElementById('childSvg');
-        const btnChat = document.getElementById('btnChildChat');
-        const btnCookie = document.getElementById('btnFeedCookie');
-        const btnNap = document.getElementById('btnChildNap');
-        const moodBadge = document.getElementById('babyMoodBadge');
+    
+    // Baby mascot removed for professional portfolio
 
-        if (!container) return;
 
-        let posX = 40;
-        let direction = 1; // 1 = right, -1 = left
-        let isHovered = false;
-        let isNapping = false;
-        let isTurning = false;
-
-        // Sound & Animation for Feeding Cookies
-        const triggerCookieFeed = (e) => {
-            if (e && e.stopPropagation) e.stopPropagation();
-            
-
-            // Baby happy hop bounce
-            if (character) {
-                character.classList.remove('hopping');
-                void character.offsetWidth;
-                character.classList.add('hopping');
-            }
-
-            // Spawn floating cookie & candy emojis around baby
-            const rect = container.getBoundingClientRect();
-            const emojis = ['🍪', '⭐', '🍪', '✨', '🍼', '🍬', '🍪'];
-            emojis.forEach((emoji, i) => {
-                const p = document.createElement('div');
-                p.className = 'floating-cookie-particle';
-                p.textContent = emoji;
-                const offsetX = (Math.random() - 0.5) * 80;
-                const offsetY = (Math.random() - 0.5) * 40;
-                p.style.left = `${rect.left + 50 + offsetX}px`;
-                p.style.top = `${rect.top - 15 + offsetY}px`;
-                p.style.fontSize = `${1.2 + Math.random() * 0.7}rem`;
-                p.style.animationDelay = `${i * 0.07}s`;
-                document.body.appendChild(p);
-                setTimeout(() => p.remove(), 1400);
-            });
-
-            // Baby thank-you message with tech trivia
-            const cookieQuotes = [
-                "OM NOM NOM! 🍪 Thank youuu! Fun fact: Chandru scored 70% Elite in NPTEL Algorithms!",
-                "YUMMY COOKIE! 🍪 Big Bro's YOLOv8 runs at 30+ FPS without breaking a sweat!",
-                "CRUNCH CRUNCH! 🍪 Want to see Big Bro's GPA 8.8 gold stars? Ask me in chat!",
-                "WOOHOO! Sugar power! 🍪 Big Bro built Resume AI with Sentence-BERT & Groq!"
-            ];
-            if (speechText) {
-                speechText.textContent = cookieQuotes[Math.floor(Math.random() * cookieQuotes.length)];
-            }
-            if (moodBadge) {
-                moodBadge.textContent = 'Mood: Sugar Rush! 🍭🍪';
-            }
-        };
-        triggerCookieFeedGlobal = triggerCookieFeed;
-
-        if (btnCookie) {
-            btnCookie.addEventListener('click', triggerCookieFeed);
-        }
-
-        // Nap / Wake Toggle
-        if (btnNap) {
-            btnNap.addEventListener('click', (e) => {
-                e.stopPropagation();
-                isNapping = !isNapping;
-                if (isNapping) {
-                    container.classList.add('napping');
-                    btnNap.innerHTML = '<i class="fas fa-sun"></i> <span>Wake</span>';
-                    if (speechText) speechText.textContent = 'Zzz... Dreaming of neural networks... 💤';
-                    if (moodBadge) moodBadge.textContent = 'Mood: Sleepy Zzz 💤';
-                } else {
-                    container.classList.remove('napping');
-                    btnNap.innerHTML = '<i class="fas fa-bed"></i> <span>Nap</span>';
-                    
-                    if (speechText) speechText.textContent = "Yaaawn! I'm awake and ready to explore! 👶⚡";
-                    if (moodBadge) moodBadge.textContent = 'Mood: Super Excited! 🍭';
-                }
-            });
-        }
-
-        // Mouse hover pause to let users comfortably click mascot actions
-        container.addEventListener('mouseenter', () => { isHovered = true; });
-        container.addEventListener('mouseleave', () => { isHovered = false; });
-
-        // Crawling Physics Loop: Steps forward every 1s (in sync with CSS crawl kick gait)
-        setInterval(() => {
-            // Respect mobile layout (< 600px) where position is safely docked
-            if (window.innerWidth <= 600) return;
-            if (isHovered || isNapping || isTurning) return;
-
-            const minX = 25;
-            const maxX = Math.max(80, window.innerWidth - 240);
-
-            posX += direction * 35;
-
-            if (posX >= maxX && direction === 1) {
-                posX = maxX;
-                isTurning = true;
-                container.style.transition = 'left 0.8s ease';
-                container.style.left = `${posX}px`;
-                setTimeout(() => {
-                    if (isNapping) { isTurning = false; return; }
-                    direction = -1;
-                    if (childSvg) childSvg.style.transform = 'scaleX(-1)';
-                    setTimeout(() => { isTurning = false; }, 800);
-                }, 1400);
-            } else if (posX <= minX && direction === -1) {
-                posX = minX;
-                isTurning = true;
-                container.style.transition = 'left 0.8s ease';
-                container.style.left = `${posX}px`;
-                setTimeout(() => {
-                    if (isNapping) { isTurning = false; return; }
-                    direction = 1;
-                    if (childSvg) childSvg.style.transform = 'scaleX(1)';
-                    setTimeout(() => { isTurning = false; }, 800);
-                }, 1400);
-            } else {
-                container.style.transition = 'left 1s linear';
-                container.style.left = `${posX}px`;
-            }
-        }, 1000);
-
-        // Rotating Speech Bubble Thoughts
-        const babyThoughts = [
-            "Hiii! I'm crawling to explore Big Bro's AI! Click me! 👶✨",
-            "Big Bro has an 8.8 GPA at Velammal! Isn't he smart?! ⭐",
-            "Vroom vroom! YOLOv8 spots potholes at 30+ FPS! 🚗💨",
-            "Did someone say cookies? Feed me a cookie! 🍪😋",
-            "Sentence-BERT creates 384-D vector embeddings! Woah! 🧠",
-            "Stinky rotten onions can't fool our ESP32 sensor! 🧅🚫",
-            "Groq LLaMA-3.3 generates smart rewrites in 1.5s! ⚡",
-            "Need a high-impact AI/ML engineer? Hire Big Bro! 💼🚀",
-            "Big Bro won honors at VISAI 2025 International Expo! 🏆✨"
-        ];
-        let thoughtIdx = 0;
-        setInterval(() => {
-            if (isNapping) return;
-            thoughtIdx = (thoughtIdx + 1) % babyThoughts.length;
-            if (speechText) {
-                speechText.style.opacity = '0';
-                setTimeout(() => {
-                    speechText.textContent = babyThoughts[thoughtIdx];
-                    speechText.style.opacity = '1';
-                }, 250);
-            }
-        }, 7000);
-    };
-    initCrawlingChild();
 
     // ====================================================================
     // 16. NOVELTY: WONDER-KID AI CHATBOT (Childlike & Technically Brilliant)
@@ -1493,9 +1340,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const initBabyChatbot = () => {
         const modal = document.getElementById('aiTerminalModal');
         const triggerNavBtn = document.getElementById('cmdPaletteBtn');
-        const triggerChildBtn = document.getElementById('btnChildChat');
-        const triggerCharacter = document.getElementById('childCharacter');
-        const triggerSpeechBubble = document.getElementById('childSpeechBubble');
+        // Removed baby mascot trigger
+        
+        
         const closeBtnX = document.getElementById('btnTerminalCloseX');
         const soundBtn = document.getElementById('btnSoundToggle');
         const soundIcon = document.getElementById('soundIcon');
@@ -1503,7 +1350,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const terminalInput = document.getElementById('terminalInput');
         const messagesContainer = document.getElementById('chatMessagesContainer');
         const promptChips = document.querySelectorAll('.prompt-chip');
-        const babyMoodBadge = document.getElementById('babyMoodBadge');
+        
 
         const openDialog = () => {
             if (!modal) return;
