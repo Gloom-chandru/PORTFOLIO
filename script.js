@@ -1,4 +1,4 @@
-/**
+﻿/**
  * CHANDRU M - Portfolio Scripts
  * High-performance, accessible, and conflict-free interactivity
  */
@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const caseStudyData = {
         'resume-ai': {
-            title: 'Resume AI — Career Gap Analyzer & Skill Roadmap',
+            title: 'Resume AI â€” Career Gap Analyzer & Skill Roadmap',
             category: 'Generative AI & NLP',
             github: 'https://github.com/Gloom-chandru/resume-ai',
             problem: 'Job seekers struggle to understand why their resumes fail automated ATS systems, and lack actionable, role-aligned skill recommendations.',
@@ -378,12 +378,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
             modalOverlay.classList.add('open');
             document.body.style.overflow = 'hidden';
+            modalOverlay.setAttribute('aria-hidden', 'false');
+
+            // Focus management: focus close button, trap Tab within modal
+            if (modalClose) {
+                setTimeout(() => modalClose.focus(), 50);
+            }
+            const caseFocusTrap = (e) => {
+                if (e.key !== 'Tab' || !modalOverlay.classList.contains('open')) return;
+                const focusables = modalOverlay.querySelectorAll(
+                    'a[href], button:not([disabled]), input, textarea, [tabindex]:not([tabindex="-1"])'
+                );
+                if (!focusables.length) return;
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+                if (e.shiftKey) {
+                    if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+                } else {
+                    if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+                }
+            };
+            modalOverlay.addEventListener('keydown', caseFocusTrap);
         });
     });
 
     const closeModal = () => {
         if (!modalOverlay) return;
         modalOverlay.classList.remove('open');
+        modalOverlay.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
     };
 
@@ -1164,7 +1186,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const humidity = sliderHumidity ? parseFloat(sliderHumidity.value) : 58;
             const gas = sliderGas ? parseFloat(sliderGas.value) : 18;
 
-            if (valTempBadge) valTempBadge.textContent = `${temp} °C`;
+            if (valTempBadge) valTempBadge.textContent = `${temp} Â°C`;
             if (valHumidityBadge) valHumidityBadge.textContent = `${humidity} %`;
             if (valGasBadge) valGasBadge.textContent = `${gas} ppm`;
 
@@ -1214,7 +1236,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     alertBox.classList.add('safe');
                     alertIcon.className = 'fas fa-shield-alt';
                     alertTitle.textContent = 'All Storage Systems Nominal';
-                    alertDesc.textContent = `Microclimate optimal (Temp ${temp}°C, Humidity ${humidity}%). NH3 gas is at baseline (${gas} ppm / 45 ppm threshold). No action required.`;
+                    alertDesc.textContent = `Microclimate optimal (Temp ${temp}Â°C, Humidity ${humidity}%). NH3 gas is at baseline (${gas} ppm / 45 ppm threshold). No action required.`;
                 } else if (risk < 75) {
                     alertBox.classList.add('warning');
                     alertIcon.className = 'fas fa-exclamation-triangle';
@@ -1349,7 +1371,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ====================================================================
     // 16. NOVELTY: WONDER-KID AI CHATBOT (Childlike & Technically Brilliant)
     // ====================================================================
-    const initBabyChatbot = () => {
+    const initPortfolioAI = () => {
         const modal = document.getElementById('aiTerminalModal');
         const triggerNavBtn = document.getElementById('cmdPaletteBtn');
         // Removed baby mascot trigger
@@ -1373,6 +1395,23 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 if (terminalInput) terminalInput.focus();
             }, 120);
+
+            // WCAG 2.1 AA: Tab focus trap within dialog
+            const aiTerminalFocusTrap = (e) => {
+                if (e.key !== 'Tab' || !modal.classList.contains('open')) return;
+                const focusables = modal.querySelectorAll(
+                    'a[href], button:not([disabled]), input, textarea, [tabindex]:not([tabindex="-1"])'
+                );
+                if (!focusables.length) return;
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+                if (e.shiftKey) {
+                    if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+                } else {
+                    if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+                }
+            };
+            modal.addEventListener('keydown', aiTerminalFocusTrap);
         };
 
         const closeDialog = () => {
@@ -1420,148 +1459,148 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Childlike & Technically Accurate Knowledge Engine
-        const queryBabyKnowledge = (q) => {
+        // Professional Portfolio AI Knowledge Engine
+        const queryPortfolioAI = (q) => {
             const query = q.toLowerCase().trim();
 
             if (query.includes('why') || query.includes('hire') || query.includes('strength') || query.includes('best') || query.includes('who is')) {
                 return {
-                    title: '👶 Why Big Bro Chandru is a Tech Superhero!',
-                    content: `<p>Goo-goo gaa-gaa! Because Big Bro isn't just someone who watches tutorials — he builds real working AI machines! Look at his superpowers:</p>
+                    title: '⚡ Why Hire Chandru M — Key Strengths',
+                    content: `<p>Chandru M is an AI &amp; ML engineer who ships production-grade systems, not just tutorial projects. Here's what sets him apart:</p>
                         <ul>
-                            <li><strong>Super-Duper Brain (GPA 8.8 / 10.0):</strong> At Velammal Institute of Technology, he studied super hard across all 5 semesters!</li>
-                            <li><strong>Real Vision Wheels (YOLOv8 30+ FPS):</strong> He trained neural nets that spot road potholes in real time so cars don't go crunch!</li>
-                            <li><strong>Big Brain LLMs (Sentence-BERT + Groq LLaMA-3.3):</strong> He turns resumes into 384-dimensional math vectors and gets rewrites in 1.5 seconds!</li>
-                            <li><strong>Trophy Shelf:</strong> Honored at VISAI 2025 International Exhibition and won the 30-Hour KEC Hackathon!</li>
+                            <li><strong>Strong Academic Foundation (GPA 8.8 / 10.0):</strong> B.Tech AI &amp; Data Science at Velammal Institute of Technology — consistent first-class performance across all 5 semesters.</li>
+                            <li><strong>Production Computer Vision (YOLOv8 30+ FPS):</strong> Custom-trained YOLOv8 model achieving real-time road hazard detection at 30+ FPS with OpenCV.</li>
+                            <li><strong>GenAI & Embeddings (Sentence-BERT + Groq LLaMA-3.3 70B):</strong> Semantic resume matching using 384-D Sentence-BERT vectors with Groq-powered rewrite in under 1.5 seconds.</li>
+                            <li><strong>Recognized Achievements:</strong> Presenter at VISAI 2025 International Project Exhibition; winner of the 30-hour KEC National Hackathon.</li>
                         </ul>
-                        <p>You should hire him right now before another smart company scoops him up! 🎈</p>`,
+                        <p>A strong hire for any AI/ML role — technical depth, real deployments, and a track record of shipping under pressure.</p>`,
                     actions: [
-                        { label: '🏃 Crawl to Projects', type: 'scroll', target: '#projects' },
-                        { label: '🧪 Test in AI Lab', type: 'scroll', target: '#ai-lab' },
-                        { label: '📄 Download Resume', type: 'link', target: 'resume.pdf', download: true }
+                        { label: '🔍 View Projects', type: 'scroll', target: '#projects' },
+                        { label: '⚗️ Live AI Lab Demo', type: 'scroll', target: '#ai-lab' },
+                        { label: 'ðŸ“„ Download Resume', type: 'link', target: 'resume.pdf', download: true }
                     ]
                 };
             }
 
             if (query.includes('yolo') || query.includes('bump') || query.includes('pothole') || query.includes('vision') || query.includes('camera') || query.includes('road')) {
                 return {
-                    title: '🚗 Vroom Vroom! Road Bump Vision with YOLOv8!',
-                    content: `<p>Hold onto your juice box! 🧃 When cars drive fast, potholes can pop their tires! Ouchie!</p>
+                    title: '🚗 Computer Vision: YOLOv8 Road Hazard Detection',
+                    content: `<p>This project tackles real-world road safety through real-time computer vision:</p>
                         <ul>
-                            <li><strong>Speedy Fast 30+ FPS:</strong> Big Bro's custom YOLOv8 model runs at 30+ frames per second with OpenCV. That means it looks at the road 30 times in ONE second!</li>
+                            <li><strong>Real-Time Inference (30+ FPS):</strong> Custom YOLOv8 model running at 30+ FPS with OpenCV — suitable for edge deployment in dashcams.</li>
                             <li><strong>Smart Bounding Boxes:</strong> It draws bright neon boxes right over cracks, crevices, and deep rifts with Non-Maximum Suppression!</li>
                             <li><strong>Edge-Ready:</strong> Tuned to run inside real car dashcams with low compute!</li>
                         </ul>
-                        <p>Wanna see it find potholes live right now? You can test it in our AI Lab!</p>`,
+                        <p>You can run the live pothole scanner directly in the AI Lab sandbox below.</p>`,
                     actions: [
-                        { label: '🧪 Test YOLO Scanner in Lab', type: 'scroll', target: '#ai-lab', tab: 'tabLabYolo' },
-                        { label: '💻 View YOLO GitHub Repo', type: 'link', target: 'https://github.com/Gloom-chandru/ROAD-PATHOLE-DETECTION' }
+                        { label: 'ðŸ§ª Test YOLO Scanner in Lab', type: 'scroll', target: '#ai-lab', tab: 'tabLabYolo' },
+                        { label: 'ðŸ’» View YOLO GitHub Repo', type: 'link', target: 'https://github.com/Gloom-chandru/ROAD-PATHOLE-DETECTION' }
                     ]
                 };
             }
 
             if (query.includes('resume') || query.includes('ats') || query.includes('bert') || query.includes('groq') || query.includes('magic') || query.includes('llm')) {
                 return {
-                    title: '📄 Magic Words & Vector Math! Resume AI',
-                    content: `<p>Imagine you want to trade your favorite toy card for another card! You need them to match, right?</p>
+                    title: '📄 GenAI: Resume Analyzer & ATS Optimizer',
+                    content: `<p>This system uses semantic NLP to match candidate profiles against job requirements:</p>
                         <ul>
-                            <li><strong>384-D Sentence-BERT Magic:</strong> Big Bro turns boring candidate resumes and job requirements into 384 magic math numbers called vectors! Then he calculates cosine distance to see if they match!</li>
-                            <li><strong>Lightning Groq LLaMA-3.3 70B:</strong> If skills are missing, the super-fast Groq model rewrites bullet points in under <strong>1.5 seconds</strong>!</li>
-                            <li><strong>Zero ATS Rejection:</strong> It beats boring recruiter filter robots effortlessly!</li>
+                            <li><strong>Semantic Matching (384-D Sentence-BERT):</strong> Encodes both resume and job description into 384-dimensional vectors; cosine similarity ranks skill alignment.</li>
+                            <li><strong>AI Rewriting (Groq LLaMA-3.3 70B):</strong> Missing skills trigger Groq LLaMA-3.3 70B to rewrite resume bullets in under <strong>1.5 seconds</strong>.</li>
+                            <li><strong>ATS-Optimized Output:</strong> Produces keyword-optimized, ATS-compliant output for higher recruiter visibility.</li>
                         </ul>
-                        <p>You can test the cosine similarity engine right in the AI Lab sandbox!</p>`,
+                        <p>Test the live cosine similarity engine in the AI Lab sandbox.</p>`,
                     actions: [
-                        { label: '🧪 Test Live Cosine Matcher', type: 'scroll', target: '#ai-lab', tab: 'tabLabResume' },
-                        { label: '💻 View Resume AI Repo', type: 'link', target: 'https://github.com/Gloom-chandru/resume-ai' }
+                        { label: 'ðŸ§ª Test Live Cosine Matcher', type: 'scroll', target: '#ai-lab', tab: 'tabLabResume' },
+                        { label: 'ðŸ’» View Resume AI Repo', type: 'link', target: 'https://github.com/Gloom-chandru/resume-ai' }
                     ]
                 };
             }
 
             if (query.includes('onion') || query.includes('rot') || query.includes('sensor') || query.includes('visai') || query.includes('iot') || query.includes('esp32')) {
                 return {
-                    title: '🧅 P.U.! Stinky Onions & The ESP32 Hero!',
-                    content: `<p>Ewww! Have you ever smelled a rotten onion in the pantry? It smells SO STINKY! 😷</p>
+                    title: '🌐 IoT: Smart Produce Storage System (ESP32)',
+                    content: `<p>This IoT system prevents agricultural post-harvest losses through real-time sensor monitoring:</p>
                         <ul>
-                            <li><strong>VISAI 2025 International Stage:</strong> Big Bro presented this at the VISAI 2025 International Project Exhibition!</li>
-                            <li><strong>Sniffing Decay Gases:</strong> When onions start to spoil, they release tiny invisible NH3 bacterial gases. Big Bro put MQ-137 and DHT11 sensors on an ESP32 chip!</li>
-                            <li><strong>Automatic Hero Fans:</strong> As soon as gas crosses 45 ppm, emergency fans turn on and alert the farmer via MQTT telemetry before visual rot ruins the harvest!</li>
+                            <li><strong>VISAI 2025 International Recognition:</strong> Exhibited at the VISAI 2025 (15th International Project Competition) under the SDG Industry &amp; Innovation track.</li>
+                            <li><strong>Multi-Sensor Gas Detection:</strong> MQ-137 (ammonia) and DHT11 (temperature/humidity) sensors on ESP32 detect early decay gas signatures.</li>
+                            <li><strong>Automated Response System:</strong> Threshold breach at 45 ppm triggers ventilation fans and MQTT alerts to farmers before visible spoilage begins.</li>
                         </ul>
-                        <p>We saved all the yummy onions! 🧅🎉</p>`,
+                        <p>Real-world agricultural impact: reduces post-harvest onion losses with fully automated early-warning telemetry.</p>`,
                     actions: [
-                        { label: '🧪 Test Gas Oscilloscope in Lab', type: 'scroll', target: '#ai-lab', tab: 'tabLabIot' }
+                        { label: 'ðŸ§ª Test Gas Oscilloscope in Lab', type: 'scroll', target: '#ai-lab', tab: 'tabLabIot' }
                     ]
                 };
             }
 
             if (query.includes('gpa') || query.includes('star') || query.includes('education') || query.includes('college') || query.includes('velammal') || query.includes('grade')) {
                 return {
-                    title: '⭐ Big Bro\'s Gold Stars & Report Card!',
-                    content: `<p>Look look look! Look at all his shiny gold stars! ⭐⭐⭐⭐⭐</p>
+                    title: '🎓 Academic Profile & Certifications',
+                    content: `<p>Chandru's academic credentials demonstrate consistent top-tier performance:</p>
                         <ul>
-                            <li><strong>Velammal Institute of Technology:</strong> B.Tech in Artificial Intelligence & Data Science (2023 — Exp. 2027).</li>
+                            <li><strong>Velammal Institute of Technology:</strong> B.Tech in Artificial Intelligence & Data Science (2023 â€” Exp. 2027).</li>
                             <li><strong>8.8 / 10.0 Cumulative GPA:</strong> Maintained high first-class academic excellence across Semesters 1 to 5!</li>
                             <li><strong>NPTEL Elite 70%:</strong> Conquered 'Design & Analysis of Algorithms' with National Elite Certification!</li>
                         </ul>
-                        <p>Big Bro is super smart and does all his homework AND builds AI robots!</p>`,
+                        <p>Strong theoretical foundation combined with hands-on systems building — a rare combination at the undergraduate level.</p>`,
                     actions: [
-                        { label: '🎓 View Education Timeline', type: 'scroll', target: '#education' }
+                        { label: 'ðŸŽ“ View Education Timeline', type: 'scroll', target: '#education' }
                     ]
                 };
             }
 
             if (query.includes('cookie') || query.includes('feed') || query.includes('snack') || query.includes('eat')) {
                 return {
-                    title: '🍪 NOM NOM NOM! Best Friend Ever!',
-                    content: `<p>YAAAAY! Thank you for the yummy cookie! 🍪✨ My tummy is so happy!</p>
-                        <p>Did you know Big Bro also loves solving complex algorithms while eating snacks? Here is a secret: Big Bro completed two big internships at <strong>YBI Foundation</strong> (Machine Learning) and <strong>IBM Naan Mudhalvan</strong> (Full Stack AI)! Ask me anything else or give me another cookie anytime!</p>`,
+                    title: '💼 Internship Experience',
+                    content: `<p>Chandru has two industry internships backing his academic work:</p>
+                        <p>He completed two internships at <strong>YBI Foundation</strong> (Machine Learning) and <strong>IBM Naan Mudhalvan</strong> (Full Stack AI) — both building deployable AI products.</p>`,
                     actions: [
-                        { label: '🍪 Give Another Cookie!', type: 'cookie' },
-                        { label: '💼 View Experience', type: 'scroll', target: '#experience' }
+                        { label: '💼 View More', type: 'cookie' },
+                        { label: '💼 View Experience Timeline', type: 'scroll', target: '#experience' }
                     ]
                 };
             }
 
             if (query.includes('secret') || query.includes('tell me a secret') || query.includes('fun fact')) {
                 return {
-                    title: '🤫 Pssst! Big Bro\'s Secret Superpower!',
-                    content: `<p>Come closer... Big Bro coded for 30 straight hours at the KEC National Hackathon! While other teams fell asleep, Chandru stayed awake debugging ESP32 microcontrollers and won the grand championship! He NEVER gives up on hard problems! 💪⚡</p>`,
+                    title: '⚡ Fun Fact — Built Under Pressure',
+                    content: `<p>Chandru coded for 30 consecutive hours at the KEC National Hackathon, debugging ESP32 microcontrollers while other teams rested — and won. That endurance and problem-solving focus is a core trait. 💪</p>`,
                     actions: [
-                        { label: '🏃 Crawl to Projects', type: 'scroll', target: '#projects' }
+                        { label: '🔍 View Projects', type: 'scroll', target: '#projects' }
                     ]
                 };
             }
 
             if (query.includes('contact') || query.includes('email') || query.includes('reach') || query.includes('phone') || query.includes('linkedin')) {
                 return {
-                    title: '📬 Want to send Big Bro a message?',
-                    content: `<p>Yayyy! Big Bro would LOVE to talk to you! Here's how to reach him:</p>
+                    title: '📬 Contact Chandru M',
+                    content: `<p>Ready to connect? Here are the best ways to reach Chandru:</p>
                         <ul>
                             <li><strong>Email:</strong> <a href="mailto:chandrusanthosh553@gmail.com" style="color: var(--accent-cyan); text-decoration: underline;">chandrusanthosh553@gmail.com</a></li>
                             <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/chandru-m-082b99292/" target="_blank" style="color: var(--accent-cyan); text-decoration: underline;">linkedin.com/in/chandru-m-082b99292</a></li>
                             <li><strong>Location:</strong> Tamil Nadu, India (Ready to work Remotely or Relocate!)</li>
                         </ul>
-                        <p>He checks his inbox all the time! Go say hello!</p>`,
+                        <p>Response time is typically within 24 hours. Open to internship, full-time, and project collaboration opportunities.</p>`,
                     actions: [
-                        { label: '💬 Open Contact Form', type: 'scroll', target: '#contact' },
-                        { label: '📄 Download Official Resume', type: 'link', target: 'resume.pdf', download: true }
+                        { label: 'ðŸ’¬ Open Contact Form', type: 'scroll', target: '#contact' },
+                        { label: 'ðŸ“„ Download Official Resume', type: 'link', target: 'resume.pdf', download: true }
                     ]
                 };
             }
 
-            // General / Friendly Child Fallback
+            // Professional Fallback Response
             return {
-                title: '👶 Big Bro Chandru\'s Super AI Assistant!',
-                content: `<p>Hiii! I love talking about Big Bro Chandru! He's an AI & ML Engineer with an <strong>8.8 GPA</strong> who builds:</p>
+                title: '🤖 Portfolio AI — Ask Me Anything',
+                content: `<p>I'm Chandru's Portfolio AI. He's an AI &amp; ML Engineer (GPA 8.8 / 10.0) who specializes in:</p>
                     <ul>
                         <li><strong>Real-time Computer Vision:</strong> YOLOv8 road hazard detection at 30+ FPS!</li>
                         <li><strong>GenAI & Embeddings:</strong> Sentence-BERT 384-D vector search & Groq LLaMA-3.3!</li>
                         <li><strong>Edge IoT & Sensors:</strong> ESP32 smart storage honored at VISAI 2025!</li>
                     </ul>
-                    <p>Try clicking one of my toy buttons above, or ask: <em>'Why hire Big Bro?'</em> or give me a cookie! 🍪✨</p>`,
+                    <p>Try a topic button above, or ask: <em>'Why hire Chandru?'</em>, <em>'Tell me about the IoT project'</em>, or <em>'What is his GPA?'</em></p>`,
                 actions: [
-                    { label: '🏃 Crawl to Projects', type: 'scroll', target: '#projects' },
-                    { label: '🧪 Explore AI Lab', type: 'scroll', target: '#ai-lab' },
-                    { label: '📄 Download Resume', type: 'link', target: 'resume.pdf', download: true }
+                    { label: '🔍 View Projects', type: 'scroll', target: '#projects' },
+                    { label: '⚗️ Explore AI Lab', type: 'scroll', target: '#ai-lab' },
+                    { label: 'ðŸ“„ Download Resume', type: 'link', target: 'resume.pdf', download: true }
                 ]
             };
         };
@@ -1582,7 +1621,7 @@ document.addEventListener('DOMContentLoaded', () => {
             thinkingMsg.className = 'chat-bubble-baby';
             thinkingMsg.style.fontStyle = 'italic';
             thinkingMsg.style.opacity = '0.7';
-            thinkingMsg.innerHTML = '<i class="fas fa-spinner fa-spin"></i> BabyBot is giggling & thinking... 🍼';
+            thinkingMsg.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Portfolio AI is analyzing... ⚡';
             messagesContainer.appendChild(thinkingMsg);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
@@ -1592,7 +1631,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 thinkingMsg.remove();
 
                 // If user asked to crawl to projects directly
-                if (query.toLowerCase().includes('crawl to projects')) {
+                if (query.toLowerCase().includes('view projects')) {
                     closeDialog();
                     const projectsSection = document.getElementById('projects');
                     if (projectsSection) projectsSection.scrollIntoView({ behavior: 'smooth' });
@@ -1600,7 +1639,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                const res = queryBabyKnowledge(query);
+                const res = queryPortfolioAI(query);
                 const babyMsg = document.createElement('div');
                 babyMsg.className = 'chat-bubble-baby';
 
@@ -1669,6 +1708,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     };
-    initBabyChatbot();
+    initPortfolioAI();
 });
+
+
+
+
 
