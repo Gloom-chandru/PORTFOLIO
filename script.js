@@ -620,8 +620,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (dist < maxDist) {
                             const alpha = (1 - dist / maxDist) * (light ? 0.22 : 0.26);
                             ctx.strokeStyle = p1.type === 'cyan' 
-                                ? `rgba(6, 182, 212, ${alpha})` 
-                                : `rgba(139, 92, 246, ${alpha})`;
+                                ? `rgba(255, 107, 26, ${alpha})` 
+                                : `rgba(217, 70, 239, ${alpha})`;
                             ctx.lineWidth = 0.85;
                             ctx.beginPath();
                             ctx.moveTo(p1.x, p1.y);
@@ -632,7 +632,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (i % 3 === 0) {
                                 const px = p1.x + (p2.x - p1.x) * impulse;
                                 const py = p1.y + (p2.y - p1.y) * impulse;
-                                ctx.fillStyle = light ? 'rgba(59, 130, 246, 0.75)' : 'rgba(56, 189, 248, 0.9)';
+                                ctx.fillStyle = light ? 'rgba(217, 70, 239, 0.75)' : 'rgba(200, 255, 0, 0.9)';
                                 ctx.beginPath();
                                 ctx.arc(px, py, 1.4, 0, Math.PI * 2);
                                 ctx.fill();
@@ -647,7 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
                         if (mdist < 140) {
                             const malpha = (1 - mdist / 140) * 0.4;
-                            ctx.strokeStyle = `rgba(6, 182, 212, ${malpha})`;
+                            ctx.strokeStyle = `rgba(255, 107, 26, ${malpha})`;
                             ctx.lineWidth = 1;
                             ctx.beginPath();
                             ctx.moveTo(p1.x, p1.y);
@@ -666,8 +666,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (p1.y < 0 || p1.y > height) p1.vy *= -1;
 
                     ctx.fillStyle = p1.type === 'cyan'
-                        ? (light ? '#0284c7' : '#06b6d4')
-                        : (light ? '#7c3aed' : '#8b5cf6');
+                        ? (light ? '#D94F00' : '#FF6B1A')
+                        : (light ? '#B020C8' : '#D946EF');
                     ctx.beginPath();
                     ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
                     ctx.fill();
@@ -1019,7 +1019,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fill();
 
                 // Water reflection ripple
-                ctx.strokeStyle = 'rgba(6, 182, 212, 0.35)';
+                ctx.strokeStyle = 'rgba(200, 255, 0, 0.35)';
                 ctx.lineWidth = 2;
                 ctx.beginPath();
                 ctx.arc(310, 245, 35, 0, Math.PI * 2);
@@ -1039,13 +1039,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (toggleBoxes && toggleBoxes.checked) {
                 activeDefects.forEach(d => {
                     const isHigh = d.conf > 0.85;
-                    ctx.strokeStyle = isHigh ? '#06b6d4' : '#f59e0b';
+                    ctx.strokeStyle = isHigh ? '#FF6B1A' : '#C8FF00';
                     ctx.lineWidth = 2;
                     ctx.strokeRect(d.x, d.y, d.w, d.h);
 
                     // Corner brackets for high-tech HUD look
                     const cornerLen = 12;
-                    ctx.strokeStyle = isHigh ? '#38bdf8' : '#fbbf24';
+                    ctx.strokeStyle = isHigh ? '#FF8C42' : '#DDFF00';
                     ctx.lineWidth = 3;
                     // Top-left
                     ctx.beginPath();
@@ -1066,7 +1066,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ctx.font = '600 11px "JetBrains Mono", monospace';
                         const textWidth = ctx.measureText(tagText).width;
                         
-                        ctx.fillStyle = isHigh ? 'rgba(6, 182, 212, 0.9)' : 'rgba(245, 158, 11, 0.9)';
+                        ctx.fillStyle = isHigh ? 'rgba(255, 107, 26, 0.9)' : 'rgba(200, 255, 0, 0.9)';
                         ctx.fillRect(d.x, d.y - 18, textWidth + 8, 18);
 
                         ctx.fillStyle = '#090d16';
@@ -1181,7 +1181,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     riskBadge.style.color = 'var(--accent-amber)';
                 } else {
                     riskBadge.textContent = `${risk}% (CRITICAL ROT)`;
-                    riskBadge.style.color = '#ef4444';
+                    riskBadge.style.color = '#FF4A6E';
                 }
             }
 
@@ -1194,7 +1194,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     fanBadge.style.color = 'var(--accent-amber)';
                 } else {
                     fanBadge.innerHTML = '<i class="fas fa-fan fa-spin" style="color: #ef4444;"></i> EMERGENCY EXHAUST (2,800 RPM)';
-                    fanBadge.style.color = '#ef4444';
+                    fanBadge.style.color = '#FF4A6E';
                 }
             }
 
@@ -1276,7 +1276,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fillRect(0, 0, w, h);
 
                 // Grid background
-                ctx.strokeStyle = 'rgba(6, 182, 212, 0.08)';
+                ctx.strokeStyle = 'rgba(255, 107, 26, 0.08)';
                 ctx.lineWidth = 1;
                 for (let x = 0; x < w; x += 40) {
                     ctx.beginPath();
@@ -1297,7 +1297,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const gas = sliderGas ? parseFloat(sliderGas.value) : 18;
 
                 // Series 1: Temperature (Cyan)
-                ctx.strokeStyle = '#06b6d4';
+                ctx.strokeStyle = '#FF6B1A';
                 ctx.lineWidth = 2;
                 ctx.beginPath();
                 for (let x = 0; x < w; x += 4) {
@@ -1308,7 +1308,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.stroke();
 
                 // Series 2: Humidity (Blue)
-                ctx.strokeStyle = '#3b82f6';
+                ctx.strokeStyle = '#D946EF';
                 ctx.lineWidth = 2;
                 ctx.beginPath();
                 for (let x = 0; x < w; x += 4) {
@@ -1319,7 +1319,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.stroke();
 
                 // Series 3: Gas PPM (Amber)
-                ctx.strokeStyle = '#f59e0b';
+                ctx.strokeStyle = '#C8FF00';
                 ctx.lineWidth = 2;
                 ctx.beginPath();
                 for (let x = 0; x < w; x += 4) {
