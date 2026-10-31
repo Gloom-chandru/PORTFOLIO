@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Close on clicking outside
         document.addEventListener('click', (e) => {
-            if (!navbar.contains(e.target) && navLinksMenu.classList.contains('mobile-open')) {
+            if (navbar && !navbar.contains(e.target) && navLinksMenu.classList.contains('mobile-open')) {
                 hamburger.classList.remove('active');
                 navLinksMenu.classList.remove('mobile-open');
                 hamburger.setAttribute('aria-expanded', 'false');
@@ -199,16 +199,28 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const statsSection = document.getElementById('stats');
-    if (statsSection && 'IntersectionObserver' in window) {
-        const statsObserver = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                animateCounters();
-                statsObserver.unobserve(statsSection);
+    if (statsSection) {
+        if ('IntersectionObserver' in window) {
+            const statsObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(statsSection);
+                }
+            }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+            statsObserver.observe(statsSection);
+        } else {
+            animateCounters();
+        }
+
+        // Fallback: if section is already visible on page load, trigger immediately
+        setTimeout(() => {
+            if (!countersAnimated) {
+                const rect = statsSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    animateCounters();
+                }
             }
-        }, { threshold: 0.2 });
-        statsObserver.observe(statsSection);
-    } else {
-        animateCounters();
+        }, 400);
     }
 
     // ====================================================================
@@ -1372,22 +1384,21 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         if (triggerNavBtn) triggerNavBtn.addEventListener('click', openDialog);
-        if (triggerChildBtn) triggerChildBtn.addEventListener('click', openDialog);
-        if (triggerCharacter) triggerCharacter.addEventListener('click', openDialog);
-        if (triggerSpeechBubble) triggerSpeechBubble.addEventListener('click', openDialog);
         if (closeBtnX) closeBtnX.addEventListener('click', closeDialog);
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeDialog();
-        });
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeDialog();
+            });
+        }
 
         // Keybindings: Ctrl+K / Cmd+K and Escape
         document.addEventListener('keydown', (e) => {
             if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
                 e.preventDefault();
-                if (modal.classList.contains('open')) closeDialog();
+                if (modal && modal.classList.contains('open')) closeDialog();
                 else openDialog();
-            } else if (e.key === 'Escape' && modal.classList.contains('open')) {
+            } else if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
                 closeDialog();
             }
         });
@@ -1405,7 +1416,7 @@ document.addEventListener('DOMContentLoaded', () => {
             soundBtn.addEventListener('click', () => {
                 const newState = SoundFX.toggle();
                 updateSoundIcon();
-                if (newState) 
+                if (newState) SoundFX.click();
             });
         }
 
