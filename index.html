@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -77,6 +77,10 @@
                 </ul>
 
                 <div class="nav-right">
+                    <button class="btn btn-primary btn-sm nav-ai-btn" id="cmdPaletteBtn" title="Ask Portfolio AI (Ctrl+K)" aria-label="Open Portfolio AI Assistant" aria-haspopup="dialog">
+                        <i class="fas fa-robot" aria-hidden="true"></i>
+                        <span>Ask AI</span>
+                    </button>
                     <a href="resume.pdf" class="btn btn-secondary btn-sm" download="CHANDRU_Resume.pdf" title="Download CV">
                         <i class="fas fa-file-pdf" aria-hidden="true"></i>
                         <span>Resume</span>
@@ -199,7 +203,7 @@
                             <i class="fas fa-graduation-cap floating-badge-icon" aria-hidden="true"></i>
                             <div>
                                 <div style="font-size: 0.65rem; color: var(--text-muted);">B.Tech AI & DS</div>
-                                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-primary);">GPA 8.8 / 10</div>
+                                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-primary);">GPA 8.85 / 10</div>
                             </div>
                         </div>
 
@@ -222,28 +226,28 @@
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
-                    <div class="stat-number" data-target="8.8" data-suffix="/10">0</div>
+                    <div class="stat-number" data-target="8.85" data-suffix="/10">0</div>
                     <div class="stat-label">Academic GPA</div>
                     <div class="stat-sublabel">Velammal Institute of Technology</div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-trophy" aria-hidden="true"></i></div>
-                    <div class="stat-number" data-target="4" data-suffix="+">0</div>
+                    <div class="stat-number" data-target="11" data-suffix="+">0</div>
                     <div class="stat-label">Hackathons & Honors</div>
-                    <div class="stat-sublabel">VISAI 2025, IBM, KEC, ITERYX</div>
+                    <div class="stat-sublabel">VISAI 2025, Naan Mudhalvan, IBM, KEC, ITERYX</div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-briefcase" aria-hidden="true"></i></div>
-                    <div class="stat-number" data-target="2" data-suffix="">0</div>
+                    <div class="stat-number" data-target="4" data-suffix="">0</div>
                     <div class="stat-label">Industrial Internships</div>
-                    <div class="stat-sublabel">YBI Foundation & IBM Training</div>
+                    <div class="stat-sublabel">YBI Foundation & IBM Training </div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-code-branch" aria-hidden="true"></i></div>
-                    <div class="stat-number" data-target="6" data-suffix="+">0</div>
+                    <div class="stat-number" data-target="29" data-suffix="+">0</div>
                     <div class="stat-label">Technical Projects</div>
                     <div class="stat-sublabel">CV, LLM, NLP & IoT Systems</div>
                 </div>
@@ -320,7 +324,7 @@
                         </li>
                         <li class="sidebar-meta-item">
                             <span class="meta-label">Cumulative GPA</span>
-                            <span class="meta-value" style="color: var(--accent-emerald);">8.8 / 10.0 (Sem 1-5)</span>
+                            <span class="meta-value" style="color: var(--accent-emerald);">8.85 / 10.0 (Sem 1-5)</span>
                         </li>
                         <li class="sidebar-meta-item">
                             <span class="meta-label">Target Direction</span>
@@ -1517,6 +1521,65 @@
             <div id="modalBody">
                 <!-- Dynamically populated by script.js -->
             </div>
+        </div>
+    </div>
+
+    <!-- Portfolio AI Terminal Modal (Ctrl+K) -->
+    <div class="ai-terminal-modal" id="aiTerminalModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="aiTerminalTitle">
+        <div class="ai-terminal-dialog">
+            <!-- Header -->
+            <div class="ai-terminal-header">
+                <div class="ai-terminal-title-row">
+                    <span class="ai-terminal-icon"><i class="fas fa-robot" aria-hidden="true"></i></span>
+                    <span class="ai-terminal-title" id="aiTerminalTitle">Portfolio AI</span>
+                    <span class="ai-terminal-badge">CHANDRU M</span>
+                </div>
+                <div class="ai-terminal-controls">
+                    <button class="ai-terminal-ctrl-btn" id="btnSoundToggle" title="Toggle sound feedback" aria-label="Toggle sound">
+                        <i class="fas fa-volume-mute" id="soundIcon" aria-hidden="true"></i>
+                    </button>
+                    <button class="ai-terminal-ctrl-btn ai-terminal-close" id="btnTerminalCloseX" aria-label="Close Portfolio AI">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Prompt Chips -->
+            <div class="ai-prompt-chips" role="group" aria-label="Quick topic buttons">
+                <button class="prompt-chip" data-query="Why hire Chandru?" aria-label="Ask why hire Chandru">⚡ Why Hire?</button>
+                <button class="prompt-chip" data-query="Tell me about the YOLOv8 project" aria-label="Ask about YOLO project">🚗 YOLOv8</button>
+                <button class="prompt-chip" data-query="Tell me about the resume AI project" aria-label="Ask about Resume AI">📄 Resume AI</button>
+                <button class="prompt-chip" data-query="Tell me about the IoT onion storage project" aria-label="Ask about IoT project">🌐 IoT Project</button>
+                <button class="prompt-chip" data-query="What is his GPA and education?" aria-label="Ask about GPA">🎓 Education</button>
+                <button class="prompt-chip" data-query="How can I contact Chandru?" aria-label="Ask about contact">📬 Contact</button>
+            </div>
+
+            <!-- Chat Messages -->
+            <div class="ai-messages-container" id="chatMessagesContainer" aria-live="polite" aria-atomic="false" role="log">
+                <!-- Welcome message -->
+                <div class="chat-bubble-baby">
+                    <h4>🤖 Portfolio AI — Ask Me Anything</h4>
+                    <p>I'm Chandru's Portfolio AI. He's an AI &amp; ML Engineer (GPA 8.8 / 10.0) who specializes in:</p>
+                    <ul>
+                        <li><strong>Real-time Computer Vision:</strong> YOLOv8 road hazard detection at 30+ FPS!</li>
+                        <li><strong>GenAI &amp; Embeddings:</strong> Sentence-BERT 384-D vector search &amp; Groq LLaMA-3.3!</li>
+                        <li><strong>Edge IoT &amp; Sensors:</strong> ESP32 smart storage honored at VISAI 2025!</li>
+                    </ul>
+                    <p>Try a topic button above, or ask: <em>'Why hire Chandru?'</em> or <em>'What is his GPA?'</em></p>
+                </div>
+            </div>
+
+            <!-- Input Form -->
+            <form class="ai-terminal-form" id="terminalInputForm" autocomplete="off">
+                <input type="text" class="ai-terminal-input" id="terminalInput"
+                    placeholder="Ask anything about Chandru M..."
+                    aria-label="Ask a question about Chandru M"
+                    maxlength="200" />
+                <button type="submit" class="ai-terminal-send" aria-label="Send message">
+                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                </button>
+            </form>
+            <p class="ai-terminal-hint"><kbd>Ctrl</kbd>+<kbd>K</kbd> to open &nbsp;·&nbsp; <kbd>Esc</kbd> to close</p>
         </div>
     </div>
 
